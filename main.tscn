@@ -1,6 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlma21blg7omj"]
+[gd_scene load_steps=20 format=3 uid="uid://dlma21blg7omj"]
 
 [ext_resource type="ArrayMesh" uid="uid://bsdx74exeukmj" path="res://assets/3d models/blackjack_table.obj" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://d0rvm77teqxyn" path="res://icon.svg" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://d04hgr5h6ttif" path="res://assets/cards-assets/base_cards/20_Element_Fire.png" id="3_7mycd"]
+[ext_resource type="Texture2D" uid="uid://b5bsrkn3yx0bo" path="res://assets/cards-assets/base_cards/23_Element_Water.png" id="4_272bh"]
+[ext_resource type="Texture2D" uid="uid://0a4ry35d3cku" path="res://assets/cards-assets/base_cards/22_Element_Air.png" id="5_5vw27"]
+[ext_resource type="Texture2D" uid="uid://ldow2xt6m0ul" path="res://assets/cards-assets/base_cards/25_Element_Earth.png" id="6_kek77"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
 albedo_color = Color(0, 0.356863, 0, 1)
@@ -11,10 +16,39 @@ albedo_color = Color(0.560784, 0.0156863, 0.0862745, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
 albedo_color = Color(0.560784, 0.0196078, 0.00392157, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
+albedo_texture = ExtResource("2_0xm2m")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7mycd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4c57u"]
+albedo_texture = ExtResource("3_7mycd")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_efxa6"]
+material = SubResource("StandardMaterial3D_4c57u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dg77c"]
+albedo_texture = ExtResource("4_272bh")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ycdy4"]
+material = SubResource("StandardMaterial3D_dg77c")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w48qg"]
+albedo_texture = ExtResource("5_5vw27")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vivmo"]
+material = SubResource("StandardMaterial3D_w48qg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cqfq"]
+albedo_texture = ExtResource("6_kek77")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yaehf"]
+material = SubResource("StandardMaterial3D_2cqfq")
+
 [node name="main" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.999979, 0.00526386, -0.00374083, 3.52474e-10, 0.579281, 0.815128, 0.00645772, 0.815111, -0.579269, 0, 1.46279, -0.438095)
+transform = Transform3D(-0.999979, 0.00526386, -0.00374083, 3.52474e-10, 0.579281, 0.815128, 0.00645772, 0.815111, -0.579269, 0, 1.51619, -0.438095)
 
 [node name="BlackjackTable" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.389, 0)
@@ -25,3 +59,29 @@ surface_material_override/2 = SubResource("StandardMaterial3D_1bvp3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.0261944, 0.999657, 0, -0.999657, 0.0261944, 0, 3.41891, 0.140463)
+
+[node name="player1" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.199999, 0, 0.000600415, 0, 0.2, 0, -0.000600415, 0, -0.199999, 0.566327, 0.698901, -0.301993)
+material_override = SubResource("StandardMaterial3D_lquwl")
+mesh = SubResource("PlaneMesh_7mycd")
+
+[node name="player2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.199999, 0, 0.000600415, 0, 0.2, 0, -0.000600415, 0, -0.199999, -0.572, 0.699, -0.302)
+material_override = SubResource("StandardMaterial3D_lquwl")
+mesh = SubResource("PlaneMesh_7mycd")
+
+[node name="fire_card" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.05, 0, 7.54979e-09, 0, 0.05, 0, -7.54979e-09, 0, -0.05, 0.918959, 0.558106, 0.103508)
+mesh = SubResource("PlaneMesh_efxa6")
+
+[node name="water_card" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.05, 0, 7.54979e-09, 0, 0.05, 0, -7.54979e-09, 0, -0.05, 0.784009, 0.558106, 0.103508)
+mesh = SubResource("PlaneMesh_ycdy4")
+
+[node name="air_card" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.05, 0, 7.54979e-09, 0, 0.05, 0, -7.54979e-09, 0, -0.05, 0.643004, 0.558106, 0.103508)
+mesh = SubResource("PlaneMesh_vivmo")
+
+[node name="earth_card" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.05, 0, 7.54979e-09, 0, 0.05, 0, -7.54979e-09, 0, -0.05, 0.496512, 0.558106, 0.103508)
+mesh = SubResource("PlaneMesh_yaehf")
