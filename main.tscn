@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dlma21blg7omj"]
+[gd_scene load_steps=23 format=3 uid="uid://dlma21blg7omj"]
 
 [ext_resource type="ArrayMesh" uid="uid://bsdx74exeukmj" path="res://assets/3d models/blackjack_table.obj" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://d0rvm77teqxyn" path="res://icon.svg" id="2_0xm2m"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b5bsrkn3yx0bo" path="res://assets/cards-assets/base_cards/23_Element_Water.png" id="4_272bh"]
 [ext_resource type="Texture2D" uid="uid://0a4ry35d3cku" path="res://assets/cards-assets/base_cards/22_Element_Air.png" id="5_5vw27"]
 [ext_resource type="Texture2D" uid="uid://ldow2xt6m0ul" path="res://assets/cards-assets/base_cards/25_Element_Earth.png" id="6_kek77"]
+[ext_resource type="Texture2D" uid="uid://b1p42qi7btf3y" path="res://assets/textures/floor.jpg" id="7_272bh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
 albedo_color = Color(0, 0.356863, 0, 1)
@@ -44,6 +45,11 @@ albedo_texture = ExtResource("6_kek77")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yaehf"]
 material = SubResource("StandardMaterial3D_2cqfq")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5vw27"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
+albedo_texture = ExtResource("7_272bh")
 
 [node name="main" type="Node3D"]
 
@@ -85,3 +91,8 @@ mesh = SubResource("PlaneMesh_vivmo")
 [node name="earth_card" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.05, 0, 7.54979e-09, 0, 0.05, 0, -7.54979e-09, 0, -0.05, 0.496512, 0.558106, 0.103508)
 mesh = SubResource("PlaneMesh_yaehf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(6, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 1.9389)
+mesh = SubResource("PlaneMesh_5vw27")
+surface_material_override/0 = SubResource("StandardMaterial3D_kek77")
