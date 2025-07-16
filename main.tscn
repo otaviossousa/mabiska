@@ -1,6 +1,27 @@
-[gd_scene format=3 uid="uid://dlma21blg7omj"]
+[gd_scene load_steps=5 format=3 uid="uid://dlma21blg7omj"]
+
+[ext_resource type="ArrayMesh" uid="uid://bsdx74exeukmj" path="res://assets/3d models/blackjack_table.obj" id="1_ig7tw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+albedo_color = Color(0, 0.356863, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
+albedo_color = Color(0.560784, 0.0156863, 0.0862745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
+albedo_color = Color(0.560784, 0.0196078, 0.00392157, 1)
 
 [node name="main" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35804, -0.980888, 2.38419e-07)
+transform = Transform3D(-0.999979, 0.00526386, -0.00374083, 3.52474e-10, 0.579281, 0.815128, 0.00645772, 0.815111, -0.579269, 0, 1.46279, -0.438095)
+
+[node name="BlackjackTable" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.389, 0)
+mesh = ExtResource("1_ig7tw")
+surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
+surface_material_override/1 = SubResource("StandardMaterial3D_h2yge")
+surface_material_override/2 = SubResource("StandardMaterial3D_1bvp3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0261944, 0.999657, 0, -0.999657, 0.0261944, 0, 3.41891, 0.140463)
