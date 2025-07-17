@@ -14,3 +14,7 @@ config/name="Mabiska"
 run/main_scene="uid://dlma21blg7omj"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameState="*res://globals/gamestate.gd"
