@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://i60mvwplxpu0"]
+
+[ext_resource type="Texture2D" uid="uid://d4lssn5eqqe71" path="res://assets/cards-assets/base_cards/21_Element_Lightning.png" id="1_ybnie"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0scw8"]
+albedo_texture = ExtResource("1_ybnie")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2kf48"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kycmc"]
+size = Vector3(2.03821, 0.176819, 1.95972)
+
+[node name="CardElectricity" type="Area3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_0scw8")
+mesh = SubResource("PlaneMesh_2kf48")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0145874, 0.0015564, 0.0460205)
+shape = SubResource("BoxShape3D_kycmc")
