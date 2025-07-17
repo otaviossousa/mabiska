@@ -1,12 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://clusej4olcn1o"]
+[gd_scene load_steps=6 format=3 uid="uid://clusej4olcn1o"]
 
 [ext_resource type="Texture2D" uid="uid://0a4ry35d3cku" path="res://assets/cards-assets/base_cards/22_Element_Air.png" id="1_g4mmo"]
+[ext_resource type="Script" uid="uid://c2i80bk64bm2b" path="res://deck scenes/card_air.gd" id="2_ufnsc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufnsc"]
 albedo_texture = ExtResource("1_g4mmo")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l1pmh"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ufnsc"]
+size = Vector3(2.03876, 0.101196, 1.99423)
+
 [node name="card_air" type="MeshInstance3D"]
 material_override = SubResource("StandardMaterial3D_ufnsc")
 mesh = SubResource("PlaneMesh_l1pmh")
+script = ExtResource("2_ufnsc")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0146179, 0.0106812, -0.0042572)
+shape = SubResource("BoxShape3D_ufnsc")

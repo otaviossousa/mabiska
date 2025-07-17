@@ -1,12 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbj52qcyieqb2"]
+[gd_scene load_steps=6 format=3 uid="uid://bbj52qcyieqb2"]
 
 [ext_resource type="Texture2D" uid="uid://b5bsrkn3yx0bo" path="res://assets/cards-assets/base_cards/23_Element_Water.png" id="1_lghh7"]
+[ext_resource type="Script" uid="uid://gi0nlqp5jpmh" path="res://deck scenes/card_water.gd" id="2_50cpi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50cpi"]
 albedo_texture = ExtResource("1_lghh7")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_35m4i"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_50cpi"]
+size = Vector3(2.03876, 0.101196, 1.99423)
+
 [node name="card_water" type="MeshInstance3D"]
 material_override = SubResource("StandardMaterial3D_50cpi")
 mesh = SubResource("PlaneMesh_35m4i")
+script = ExtResource("2_50cpi")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0146179, 0.0106812, -0.0042572)
+shape = SubResource("BoxShape3D_50cpi")
