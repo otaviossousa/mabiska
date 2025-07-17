@@ -31,6 +31,7 @@ albedo_texture = ExtResource("7_272bh")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.999979, 0.00526386, -0.00374083, -0.000156536, 0.559353, 0.82893, 0.00645582, 0.828913, -0.55934, 0, 1.51619, -0.438095)
+current = true
 
 [node name="BlackjackTable" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.389, 0)
@@ -78,11 +79,9 @@ transform = Transform3D(-0.05, 0, -4.37114e-09, 0, 0.05, 0, 4.37114e-09, 0, -0.0
 
 [node name="card_earth" parent="npc_hand" instance=ExtResource("5_5vw27")]
 transform = Transform3D(-0.05, 0, -4.37114e-09, 0, 0.05, 0, 4.37114e-09, 0, -0.05, -0.78501, 0.559, 0.062)
-skeleton = NodePath("../..")
 
 [node name="card_water" parent="npc_hand" instance=ExtResource("7_4c57u")]
 transform = Transform3D(-0.05, 0, -4.37114e-09, 0, 0.05, 0, 4.37114e-09, 0, -0.05, -0.628374, 0.559, 0.0510764)
-skeleton = NodePath("../../player_hand")
 
 [node name="card_air" parent="npc_hand" instance=ExtResource("4_272bh")]
 transform = Transform3D(-0.05, 0, -4.37114e-09, 0, 0.05, 0, 4.37114e-09, 0, -0.05, -0.971218, 0.559, 0.0632952)
