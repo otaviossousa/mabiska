@@ -52,6 +52,8 @@ func _on_merge_pressed():
 
 	if not player_card or not npc_card:
 		print("Cartas para fusão não encontradas")
+		player_card.queue_free()
+		npc_card.queue_free()
 		return
 
 	var elements_pair = [player_card.element, npc_card.element]
@@ -63,11 +65,13 @@ func _on_merge_pressed():
 	var result_element = FUSION_TABLE[elements_pair]
 	print("Fusão resultou em: ", result_element)
 
-	# devolver as cartas para os decks
-	player_card.global_position = Vector3(0.515, 0.559, 0.064) # ajuste para posição do deck
-	npc_card.global_position = Vector3(-0.628, 0.559, 0.051) # ajuste para posição do deck NPC
-	player_card.reparent(player_hand)
-	npc_card.reparent(npc_hand)
+	# devolver as cartas para os decks --> Trocar para ELIMINAR
+	#player_card.global_position = Vector3(0.515, 0.559, 0.064) # ajuste para posição do deck
+	#npc_card.global_position = Vector3(-0.628, 0.559, 0.051) # ajuste para posição do deck NPC
+	#player_card.reparent(player_hand)
+	#npc_card.reparent(npc_hand)
+	player_card.queue_free()
+	npc_card.queue_free()
 
 	# instanciar nova carta e adicionar a ambos decks
 	var new_card_player = card_electricity_scene.instantiate()
