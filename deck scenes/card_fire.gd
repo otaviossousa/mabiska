@@ -71,10 +71,10 @@ func unhighlight():
 func play_card():
 	print("Jogou carta: ", element)
 	GameState.played_card = true
+	GameState.player_played_card = self
 	GameState.selected_card = null
-	# move para a área da mesa
-	global_position = Vector3(0.166, 0.559, 0.579) # ajuste para sua posição alvo
-	# opcional: impedir highlight
+	global_position = Vector3(0.166, 0.559, 0.579) # posição da mesa
 	unhighlight()
+
 
 	

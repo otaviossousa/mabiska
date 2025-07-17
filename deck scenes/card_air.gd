@@ -26,6 +26,7 @@ func _ready():
 	connect("mouse_entered", _on_mouse_entered)
 	connect("mouse_exited", _on_mouse_exited)
 
+
 func _on_mouse_entered():
 	if owner_type != "player":
 		return
@@ -71,10 +72,10 @@ func unhighlight():
 func play_card():
 	print("Jogou carta: ", element)
 	GameState.played_card = true
+	GameState.player_played_card = self
 	GameState.selected_card = null
-	# move para a área da mesa
-	global_position = Vector3(0.166, 0.559, 0.579)  # ajuste para sua posição alvo
-	# opcional: impedir highlight
+	global_position = Vector3(0.166, 0.559, 0.579) # posição da mesa
 	unhighlight()
+
 
 	
