@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbj52qcyieqb2"]
+
+[ext_resource type="Texture2D" uid="uid://b5bsrkn3yx0bo" path="res://assets/cards-assets/base_cards/23_Element_Water.png" id="1_lghh7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50cpi"]
+albedo_texture = ExtResource("1_lghh7")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_35m4i"]
+
+[node name="card_water" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_50cpi")
+mesh = SubResource("PlaneMesh_35m4i")
