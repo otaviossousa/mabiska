@@ -7,8 +7,19 @@ extends Node3D
 @onready var card_electricity_scene := preload("res://deck scenes/card_electricity.tscn")
 
 const FUSION_TABLE = { #fusões
+	#fire, air, earth, water - Elementos básicos
 	["fire", "air"]: "electricity",
-	["air", "fire"]: "electricity"
+	["air", "fire"]: "electricity",
+	["fire","earth"]: "lava",
+	["earth","fire"]: "lava",
+	["fire","water"]: "steam",
+	["water","fire"]: "steam",
+	["air", "earth"]: "sand",
+	["earth", "air"]: "sand",
+	["air", "water"]: "ice",
+	["water", "air"]: "ice",
+	["earth", "water"]: "mud",
+	["water", "earth"]: "mud"
 }
 
 
