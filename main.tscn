@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://dlma21blg7omj"]
+[gd_scene load_steps=16 format=3 uid="uid://dlma21blg7omj"]
 
+[ext_resource type="Script" uid="uid://dcey7m0jm7meh" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="ArrayMesh" uid="uid://bsdx74exeukmj" path="res://assets/3d models/blackjack_table.obj" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://d0rvm77teqxyn" path="res://icon.svg" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://clusej4olcn1o" path="res://deck scenes/card_air.tscn" id="4_272bh"]
@@ -28,6 +29,7 @@ albedo_texture = ExtResource("2_0xm2m")
 albedo_texture = ExtResource("7_272bh")
 
 [node name="main" type="Node3D"]
+script = ExtResource("1_5vw27")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.999979, 0.00526386, -0.00374083, -0.000156536, 0.559353, 0.82893, 0.00645582, 0.828913, -0.55934, 0, 1.51619, -0.438095)
@@ -85,3 +87,15 @@ transform = Transform3D(-0.05, 0, -4.37114e-09, 0, 0.05, 0, 4.37114e-09, 0, -0.0
 
 [node name="card_air" parent="npc_hand" instance=ExtResource("4_272bh")]
 transform = Transform3D(-0.05, 0, -4.37114e-09, 0, 0.05, 0, 4.37114e-09, 0, -0.05, -0.971218, 0.559, 0.0632952)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="EndTurnButton" type="Button" parent="CanvasLayer"]
+offset_right = 53.0
+offset_bottom = 28.0
+text = "FINALIZAR TURNO"
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 149.0
+offset_bottom = 32.0
+color = Color(0, 0.682353, 0, 0.333333)
