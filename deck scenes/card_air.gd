@@ -30,11 +30,13 @@ func _on_mouse_entered():
 	if owner_type != "player":
 		return
 	print("Hover sobre carta: ", element)
+	mesh.material_override = highlight_material
 
 func _on_mouse_exited():
 	if owner_type != "player":
 		return
 	print("Saiu de cima da carta: ", element)
+	mesh.material_override = base_material
 
 func _input_event(camera, event, click_position, click_normal, shape_idx):
 	if owner_type != "player":
