@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bbj52qcyieqb2"]
 
 [ext_resource type="Texture2D" uid="uid://b5bsrkn3yx0bo" path="res://assets/cards-assets/base_cards/23_Element_Water.png" id="1_lghh7"]
-[ext_resource type="Script" uid="uid://gi0nlqp5jpmh" path="res://deck scenes/card_water.gd" id="2_50cpi"]
+[ext_resource type="Script" uid="uid://gi0nlqp5jpmh" path="res://deck scenes/basic_cards/card_water.gd" id="2_50cpi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_50cpi"]
 size = Vector3(2.03876, 0.101196, 1.99423)

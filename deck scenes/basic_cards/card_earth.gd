@@ -1,6 +1,6 @@
 extends Area3D
 
-@export var element: String = "water"
+@export var element: String = "earth"
 var owner_type: String = ""
 
 var mesh: MeshInstance3D
@@ -25,7 +25,7 @@ func _ready():
 	
 	connect("mouse_entered", _on_mouse_entered)
 	connect("mouse_exited", _on_mouse_exited)
-
+	
 func _on_mouse_entered():
 	if owner_type != "player":
 		return
@@ -37,7 +37,7 @@ func _on_mouse_exited():
 		return
 	print("Saiu de cima da carta: ", element)
 	mesh.material_override = base_material
-	
+
 func _input_event(camera, event, click_position, click_normal, shape_idx):
 	if owner_type != "player":
 		return
@@ -72,9 +72,8 @@ func play_card():
 	print("Jogou carta: ", element)
 	GameState.played_card = true
 	GameState.selected_card = null
-	# move para a área da mesa
+	GameState.player_card_type = "earth"
 	global_position = Vector3(0.166, 0.559, 0.579)  # ajuste para sua posição alvo
-	# opcional: impedir highlight
 	unhighlight()
 
 	

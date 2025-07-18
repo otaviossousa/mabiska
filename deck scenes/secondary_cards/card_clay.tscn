@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://du0byjqw4wqh8"]
+
+[ext_resource type="Texture2D" uid="uid://d0qbgvmeokhj5" path="res://assets/cards-assets/secondary_cards/Element_Clay.png" id="1_4dj2d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wbr5g"]
+size = Vector3(1.98413, 0.260986, 2.14627)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ivwa8"]
+albedo_texture = ExtResource("1_4dj2d")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_viv0o"]
+
+[node name="CardClay" type="Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.000139415, 0.00121251, -0.00294577)
+shape = SubResource("BoxShape3D_wbr5g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, -0.00156116)
+material_override = SubResource("StandardMaterial3D_ivwa8")
+mesh = SubResource("PlaneMesh_viv0o")

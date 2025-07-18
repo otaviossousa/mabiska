@@ -26,7 +26,6 @@ func _ready():
 	connect("mouse_entered", _on_mouse_entered)
 	connect("mouse_exited", _on_mouse_exited)
 
-
 func _on_mouse_entered():
 	if owner_type != "player":
 		return
@@ -65,7 +64,7 @@ func _input_event(camera, event, click_position, click_normal, shape_idx):
 
 func highlight():
 	mesh.material_override = highlight_material
-
+	
 func unhighlight():
 	mesh.material_override = base_material
 	
@@ -74,8 +73,6 @@ func play_card():
 	GameState.played_card = true
 	GameState.player_played_card = self
 	GameState.selected_card = null
+	GameState.player_card_type = "air"
 	global_position = Vector3(0.166, 0.559, 0.579) # posição da mesa
 	unhighlight()
-
-
-	

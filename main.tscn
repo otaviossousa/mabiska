@@ -1,22 +1,40 @@
-[gd_scene load_steps=16 format=3 uid="uid://dlma21blg7omj"]
+[gd_scene load_steps=23 format=3 uid="uid://dlma21blg7omj"]
 
 [ext_resource type="Script" uid="uid://dcey7m0jm7meh" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="ArrayMesh" uid="uid://bsdx74exeukmj" path="res://assets/3d models/blackjack_table.obj" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://d0rvm77teqxyn" path="res://icon.svg" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://clusej4olcn1o" path="res://deck scenes/card_air.tscn" id="4_272bh"]
-[ext_resource type="PackedScene" uid="uid://f75mx7l43g3r" path="res://deck scenes/card_earth.tscn" id="5_5vw27"]
-[ext_resource type="PackedScene" uid="uid://c407p48kqbrw4" path="res://deck scenes/card_fire.tscn" id="6_kek77"]
-[ext_resource type="PackedScene" uid="uid://bbj52qcyieqb2" path="res://deck scenes/card_water.tscn" id="7_4c57u"]
+[ext_resource type="PackedScene" uid="uid://clusej4olcn1o" path="res://deck scenes/basic_cards/card_air.tscn" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://f75mx7l43g3r" path="res://deck scenes/basic_cards/card_earth.tscn" id="5_5vw27"]
+[ext_resource type="PackedScene" uid="uid://c407p48kqbrw4" path="res://deck scenes/basic_cards/card_fire.tscn" id="6_kek77"]
+[ext_resource type="PackedScene" uid="uid://bbj52qcyieqb2" path="res://deck scenes/basic_cards/card_water.tscn" id="7_4c57u"]
 [ext_resource type="Texture2D" uid="uid://b1p42qi7btf3y" path="res://assets/textures/floor.jpg" id="7_272bh"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
-albedo_color = Color(0, 0.356863, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
+albedo_color = Color(0.0470588, 0.439216, 0, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
-albedo_color = Color(0.560784, 0.0156863, 0.0862745, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4c57u"]
+albedo_color = Color(1, 0.0784314, 0.0705882, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
-albedo_color = Color(0.560784, 0.0196078, 0.00392157, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efxa6"]
+albedo_color = Color(0.807843, 0.0941176, 0.0431373, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dg77c"]
+albedo_color = Color(0.619608, 0, 0.145098, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycdy4"]
+albedo_color = Color(0.619608, 0, 0.145098, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w48qg"]
+albedo_color = Color(0.619608, 0, 0.145098, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vivmo"]
+albedo_color = Color(0.619608, 0, 0.145098, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cqfq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yaehf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_074og"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
 albedo_texture = ExtResource("2_0xm2m")
@@ -38,9 +56,16 @@ current = true
 [node name="BlackjackTable" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.389, 0)
 mesh = ExtResource("1_ig7tw")
-surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
-surface_material_override/1 = SubResource("StandardMaterial3D_h2yge")
-surface_material_override/2 = SubResource("StandardMaterial3D_1bvp3")
+surface_material_override/0 = SubResource("StandardMaterial3D_5vw27")
+surface_material_override/1 = SubResource("StandardMaterial3D_4c57u")
+surface_material_override/2 = SubResource("StandardMaterial3D_efxa6")
+surface_material_override/3 = SubResource("StandardMaterial3D_dg77c")
+surface_material_override/4 = SubResource("StandardMaterial3D_ycdy4")
+surface_material_override/5 = SubResource("StandardMaterial3D_w48qg")
+surface_material_override/6 = SubResource("StandardMaterial3D_vivmo")
+surface_material_override/7 = SubResource("StandardMaterial3D_2cqfq")
+surface_material_override/8 = SubResource("StandardMaterial3D_yaehf")
+surface_material_override/9 = SubResource("StandardMaterial3D_074og")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.0261944, 0.999657, 0, -0.999657, 0.0261944, 0, 3.41891, 0.140463)

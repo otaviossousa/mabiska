@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://i60mvwplxpu0"]
 
-[ext_resource type="Texture2D" uid="uid://d4lssn5eqqe71" path="res://assets/cards-assets/secondary_cards/Element_Lightning.png" id="1_ybnie"]
+[ext_resource type="Texture2D" uid="uid://d4lssn5eqqe71" path="res://assets/cards-assets/secondary_cards/Element_Lightning.png" id="1_c8ch0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kycmc"]
 size = Vector3(2.03821, 0.176819, 2.00232)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0scw8"]
-albedo_texture = ExtResource("1_ybnie")
+albedo_texture = ExtResource("1_c8ch0")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2kf48"]
 

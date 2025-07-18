@@ -73,8 +73,10 @@ func play_card():
 	GameState.played_card = true
 	GameState.player_played_card = self
 	GameState.selected_card = null
+	GameState.player_card_type = "fire"
 	global_position = Vector3(0.166, 0.559, 0.579) # posição da mesa
 	unhighlight()
+	return element
 
 
 	

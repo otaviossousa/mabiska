@@ -6,7 +6,8 @@ extends Node3D
 @onready var merge_button = $CanvasLayer2/MergeButton
 
 #import secondary cards
-@onready var card_electricity_scene := preload("res://deck scenes/card_electricity.tscn")
+@onready var card_clay_scene := preload("res://deck scenes/secondary_cards/card_clay.tscn")
+@onready var card_electricity_scene := preload("res://deck scenes/secondary_cards/card_electricity.tscn")
 
 const FUSION_TABLE = {
 	# Basic
@@ -75,9 +76,6 @@ const FUSION_TABLE = {
 	["frosted glass", "fire"]: "tears of glass"
 }
 
-
-
-
 func _ready():
 	end_turn_button.visible = false
 	end_turn_button.connect("pressed", _on_end_turn_pressed)
@@ -91,18 +89,25 @@ func _process(delta):
 		end_turn_button.visible = true
 
 func _on_end_turn_pressed():
+	var player_card = GameState.player_played_card
 	print("Jogador finalizou turno!")
 
 	# Escolher carta aleatória do NPC
 	var npc_cards = npc_hand.get_children()
+	
 	if npc_cards.is_empty():
 		print("NPC não tem cartas")
 		return
 
 	var npc_card = npc_cards[randi() % npc_cards.size()]
+	#var npc_type = npc_card - # pegar o tipo de cartas do NPC
+	
+	# A carta lançada do NPC não pode ser igual ao do player:
+	var player_type = GameState.player_card_type
+	
+	npc_card = npc_cards[randi() % npc_cards.size()]
 	npc_card.global_position = Vector3(-0.100, 0.559, 0.579)
 	GameState.npc_played_card = npc_card
-
 
 	# Mostrar botão "Fundir"
 	merge_button.visible = true
@@ -115,11 +120,11 @@ func _on_merge_pressed():
 	# encontrar as cartas na mesa
 	var player_card = GameState.player_played_card
 	var npc_card = GameState.npc_played_card
-
+	
 	if not player_card or not npc_card:
 		print("Cartas para fusão não encontradas")
-		player_card.queue_free()
-		npc_card.queue_free()
+		#player_card.queue_free()
+		#npc_card.queue_free()
 		return
 
 	var elements_pair = [player_card.element, npc_card.element]
@@ -136,11 +141,12 @@ func _on_merge_pressed():
 	#npc_card.global_position = Vector3(-0.628, 0.559, 0.051) # ajuste para posição do deck NPC
 	#player_card.reparent(player_hand)
 	#npc_card.reparent(npc_hand)
+	
 	player_card.queue_free()
 	npc_card.queue_free()
 
 	# instanciar nova carta e adicionar a ambos decks
-	var new_card_player = card_electricity_scene.instantiate()
+	var new_card_player = card_clay_scene.instantiate()
 	var new_card_npc = card_electricity_scene.instantiate()
 
 	player_hand.add_child(new_card_player)
