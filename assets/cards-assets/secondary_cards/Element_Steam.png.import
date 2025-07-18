@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4lssn5eqqe71"
-path.s3tc="res://.godot/imported/21_Element_Lightning.png-da23bf1c96a3241de83b522f3a1e7200.s3tc.ctex"
+uid="uid://7gya4im4n1uh"
+path="res://.godot/imported/Element_Steam.png-08b9b2e32da969d1f443e37616dbdf28.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards-assets/base_cards/21_Element_Lightning.png"
-dest_files=["res://.godot/imported/21_Element_Lightning.png-da23bf1c96a3241de83b522f3a1e7200.s3tc.ctex"]
+source_file="res://assets/cards-assets/secondary_cards/Element_Steam.png"
+dest_files=["res://.godot/imported/Element_Steam.png-08b9b2e32da969d1f443e37616dbdf28.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

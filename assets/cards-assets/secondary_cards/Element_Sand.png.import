@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://co3pod1n1owhe"
-path.s3tc="res://.godot/imported/24_Element_Dark_Mirror.png-1715767314604a0fae1accb5faca61f9.s3tc.ctex"
+uid="uid://da3t570x7dyxv"
+path.s3tc="res://.godot/imported/Element_Sand.png-a45f0928303527a3398865ff400c71e1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/cards-assets/base_cards/24_Element_Dark_Mirror.png"
-dest_files=["res://.godot/imported/24_Element_Dark_Mirror.png-1715767314604a0fae1accb5faca61f9.s3tc.ctex"]
+source_file="res://assets/cards-assets/secondary_cards/Element_Sand.png"
+dest_files=["res://.godot/imported/Element_Sand.png-a45f0928303527a3398865ff400c71e1.s3tc.ctex"]
 
 [params]
 

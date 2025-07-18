@@ -4,51 +4,64 @@ extends Node3D
 @onready var npc_hand = $npc_hand
 @onready var end_turn_button := $CanvasLayer/EndTurnButton
 @onready var merge_button = $CanvasLayer2/MergeButton
+
+#import secondary cards
 @onready var card_electricity_scene := preload("res://deck scenes/card_electricity.tscn")
 
 const FUSION_TABLE = {
-	# Básico
-	["air", "earth"]: "dust",
+	# Basic
+	["air", "earth"]: "sand",
+	["earth", "air"]: "sand",
+	
+	["fire","air"]: "lightining",
 	["air", "fire"]: "lightning",
+	
+	["water","air"]:"mist",
 	["air", "water"]: "mist",
+	
+	["fire","earth"]: "magma",
 	["earth", "fire"]: "magma",
+	
+	["water","earth"]: "clay",
 	["earth", "water"]: "clay",
+	
+	["water","fire"]: "steam",
 	["fire", "water"]: "steam",
 
-	# Secundário
+	# Secondary
 	["lightning", "earth"]: "magnetite",
 	["lightning", "water"]: "charged mist",
 	["magma", "air"]: "glass",
 	["magma", "water"]: "basalt",
 	["vapor", "earth"]: "geyser",
 	["vapor", "air"]: "smoke",
-	["dust", "fire"]: "ash",
-	["dust", "water"]: "mud",
+	["sand", "fire"]: "ash",
+	["sand", "water"]: "mud",
 	["clay", "fire"]: "brick",
 	["clay", "air"]: "dust",
 	["mist", "earth"]: "swamp",
-	["mist", "fire"]: "steam", # evaporação
+	["mist", "fire"]: "steam",
 
-	# Terciário
+	# Terciary
 	["glass", "lightning"]: "radiance",
 	["magnetite", "vapor"]: "engine",
 	["clay", "lightning"]: "animated golem",
 	["mist", "dust"]: "frosted glass",
 	["magma", "clay"]: "obsidian",
 
-	# Secundário + Secundário
-	["dust", "mist"]: "frost",
-	["dust", "vapor"]: "fog",
-	["dust", "magma"]: "cinders",
+	# Sec + sec = quaternary
+	["sand", "mist"]: "frost",
+	["sand", "vapor"]: "fog",
+	["sand", "magma"]: "cinders",
 	["glass", "vapor"]: "mirror",
-	["glass", "dust"]: "stained glass",
+	["glass", "sand"]: "stained glass",
 	["magma", "lightning"]: "stormstone",
 	["clay", "smoke"]: "idol",
 	["magma", "clay"]: "ceramic",
 	["vapor", "mist"]: "cloud",
 	["glass", "smoke"]: "dark mirror",
 
-	# Terciário + Primário
+	# terc + basic = quaternary
 	["radiance", "earth"]: "crystal",
 	["radiance", "water"]: "prism",
 	["radiance", "air"]: "halo",
