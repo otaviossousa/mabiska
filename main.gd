@@ -6,21 +6,63 @@ extends Node3D
 @onready var merge_button = $CanvasLayer2/MergeButton
 @onready var card_electricity_scene := preload("res://deck scenes/card_electricity.tscn")
 
-const FUSION_TABLE = { #fusões
-	#fire, air, earth, water - Elementos básicos
-	["fire", "air"]: "electricity",
-	["air", "fire"]: "electricity",
-	["fire","earth"]: "lava",
-	["earth","fire"]: "lava",
-	["fire","water"]: "steam",
-	["water","fire"]: "steam",
-	["air", "earth"]: "sand",
-	["earth", "air"]: "sand",
-	["air", "water"]: "ice",
-	["water", "air"]: "ice",
-	["earth", "water"]: "mud",
-	["water", "earth"]: "mud"
+const FUSION_TABLE = {
+	# Básico
+	["air", "earth"]: "dust",
+	["air", "fire"]: "lightning",
+	["air", "water"]: "mist",
+	["earth", "fire"]: "magma",
+	["earth", "water"]: "clay",
+	["fire", "water"]: "steam",
+
+	# Secundário
+	["lightning", "earth"]: "magnetite",
+	["lightning", "water"]: "charged mist",
+	["magma", "air"]: "glass",
+	["magma", "water"]: "basalt",
+	["vapor", "earth"]: "geyser",
+	["vapor", "air"]: "smoke",
+	["dust", "fire"]: "ash",
+	["dust", "water"]: "mud",
+	["clay", "fire"]: "brick",
+	["clay", "air"]: "dust",
+	["mist", "earth"]: "swamp",
+	["mist", "fire"]: "steam", # evaporação
+
+	# Terciário
+	["glass", "lightning"]: "radiance",
+	["magnetite", "vapor"]: "engine",
+	["clay", "lightning"]: "animated golem",
+	["mist", "dust"]: "frosted glass",
+	["magma", "clay"]: "obsidian",
+
+	# Secundário + Secundário
+	["dust", "mist"]: "frost",
+	["dust", "vapor"]: "fog",
+	["dust", "magma"]: "cinders",
+	["glass", "vapor"]: "mirror",
+	["glass", "dust"]: "stained glass",
+	["magma", "lightning"]: "stormstone",
+	["clay", "smoke"]: "idol",
+	["magma", "clay"]: "ceramic",
+	["vapor", "mist"]: "cloud",
+	["glass", "smoke"]: "dark mirror",
+
+	# Terciário + Primário
+	["radiance", "earth"]: "crystal",
+	["radiance", "water"]: "prism",
+	["radiance", "air"]: "halo",
+	["radiance", "fire"]: "solar flame",
+	["obsidian", "water"]: "shard",
+	["obsidian", "air"]: "blade",
+	["engine", "fire"]: "furnace",
+	["engine", "water"]: "mill",
+	["animated golem", "air"]: "spirit golem",
+	["animated golem", "earth"]: "guardian",
+	["frosted glass", "fire"]: "tears of glass"
 }
+
+
 
 
 func _ready():
