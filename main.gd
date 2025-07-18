@@ -28,7 +28,7 @@ const FUSION_TABLE = {
 	["water","fire"]: "steam",
 	["fire", "water"]: "steam",
 
-	# Secondary
+	# Secondary + basic = terciary
 	["lightning", "earth"]: "magnetite",
 	["lightning", "water"]: "charged mist",
 	["magma", "air"]: "glass",
@@ -38,18 +38,18 @@ const FUSION_TABLE = {
 	["sand", "fire"]: "ash",
 	["sand", "water"]: "mud",
 	["clay", "fire"]: "brick",
-	["clay", "air"]: "dust",
+	["clay", "air"]: "sand",
 	["mist", "earth"]: "swamp",
 	["mist", "fire"]: "steam",
 
-	# Terciary
+	# sec + sec = terciary
 	["glass", "lightning"]: "radiance",
 	["magnetite", "vapor"]: "engine",
 	["clay", "lightning"]: "animated golem",
 	["mist", "dust"]: "frosted glass",
 	["magma", "clay"]: "obsidian",
 
-	# Sec + sec = quaternary
+	# Sec + terc = quaternary
 	["sand", "mist"]: "frost",
 	["sand", "vapor"]: "fog",
 	["sand", "magma"]: "cinders",
