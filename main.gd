@@ -6,8 +6,12 @@ extends Node3D
 @onready var merge_button = $CanvasLayer2/MergeButton
 
 #import secondary cards
-@onready var card_clay_scene := preload("res://deck scenes/secondary_cards/card_clay.tscn")
-@onready var card_electricity_scene := preload("res://deck scenes/secondary_cards/card_electricity.tscn")
+@onready var card_base_scene := preload("res://deck scenes/secondary_cards/card_base.tscn")
+
+@onready var card_textures = {
+	"sand": preload("res://assets/cards-assets/secondary_cards/Element_Sand.png"),
+	"lightning": preload("res://assets/cards-assets/secondary_cards/Element_Lightning.png"),
+}
 
 const FUSION_TABLE = {
 	# Basic
@@ -146,8 +150,8 @@ func _on_merge_pressed():
 	npc_card.queue_free()
 
 	# instanciar nova carta e adicionar a ambos decks
-	var new_card_player = card_clay_scene.instantiate()
-	var new_card_npc = card_electricity_scene.instantiate()
+	var new_card_player = card_base_scene.instantiate()
+	var new_card_npc = card_base_scene.instantiate()
 
 	player_hand.add_child(new_card_player)
 	npc_hand.add_child(new_card_npc)
