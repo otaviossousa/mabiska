@@ -15,7 +15,11 @@ func _ready():
 		owner_type = "npc"
 
 	mesh = $MeshInstance3D
-	base_material = mesh.material_override
+	base_material = mesh.get_active_material(0)
+
+	if base_material == null:
+		push_error("❌ Nenhum material encontrado na superfície 0!")
+		return
 
 	# cria o material destacado
 	highlight_material = base_material.duplicate()
@@ -25,6 +29,7 @@ func _ready():
 	
 	connect("mouse_entered", _on_mouse_entered)
 	connect("mouse_exited", _on_mouse_exited)
+
 
 func _on_mouse_entered():
 	if owner_type != "player":

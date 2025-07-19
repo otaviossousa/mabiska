@@ -11,6 +11,10 @@ extends Node3D
 @onready var card_textures = {
 	"sand": preload("res://assets/cards-assets/secondary_cards/Element_Sand.png"),
 	"lightning": preload("res://assets/cards-assets/secondary_cards/Element_Lightning.png"),
+	"mist": preload("res://assets/cards-assets/secondary_cards/Element_Mist.png"),
+	"magma": preload("res://assets/cards-assets/secondary_cards/Element_Magma.png"),
+	"clay": preload("res://assets/cards-assets/secondary_cards/Element_Clay.png"),
+	"steam": preload("res://assets/cards-assets/secondary_cards/Element_Steam.png")
 }
 
 const FUSION_TABLE = {
@@ -93,71 +97,104 @@ func _process(delta):
 		end_turn_button.visible = true
 
 func _on_end_turn_pressed():
-	var player_card = GameState.player_played_card
 	print("Jogador finalizou turno!")
 
-	# Escolher carta aleatória do NPC
+	var player_card = GameState.player_played_card
+	if not player_card:
+		print("Nenhuma carta do jogador encontrada")
+		return
+
 	var npc_cards = npc_hand.get_children()
-	
 	if npc_cards.is_empty():
 		print("NPC não tem cartas")
 		return
 
-	var npc_card = npc_cards[randi() % npc_cards.size()]
-	#var npc_type = npc_card - # pegar o tipo de cartas do NPC
-	
-	# A carta lançada do NPC não pode ser igual ao do player:
-	var player_type = GameState.player_card_type
-	
-	npc_card = npc_cards[randi() % npc_cards.size()]
+	# tentar escolher uma carta diferente da do player
+	var npc_card = null
+	for card in npc_cards:
+		if card.element != player_card.element:
+			npc_card = card
+			break
+
+	if npc_card == null:
+		print("NPC só tem cartas iguais — turno inválido")
+		return
+
 	npc_card.global_position = Vector3(-0.100, 0.559, 0.579)
 	GameState.npc_played_card = npc_card
 
-	# Mostrar botão "Fundir"
 	merge_button.visible = true
-
 	end_turn_button.disabled = true
+
 
 func _on_merge_pressed():
 	print("Fusão iniciada!")
 
-	# encontrar as cartas na mesa
 	var player_card = GameState.player_played_card
 	var npc_card = GameState.npc_played_card
-	
+
 	if not player_card or not npc_card:
 		print("Cartas para fusão não encontradas")
-		#player_card.queue_free()
-		#npc_card.queue_free()
+		return
+
+	# impedir fusão de cartas iguais
+	if player_card.element == npc_card.element:
+		print("Cartas iguais! Não é possível fundir: ", player_card.element)
+		# devolver as cartas para as mãos
+		_reset_card(player_card, player_hand)
+		_reset_card(npc_card, npc_hand)
+
+		# resetar estado
+		GameState.played_card = false
+		end_turn_button.visible = false
+		end_turn_button.disabled = false
+		merge_button.visible = false
 		return
 
 	var elements_pair = [player_card.element, npc_card.element]
 
 	if not FUSION_TABLE.has(elements_pair):
 		print("Fusão inválida para elementos: ", elements_pair)
+		# devolver as cartas para as mãos
+		_reset_card(player_card, player_hand)
+		_reset_card(npc_card, npc_hand)
+
+		# resetar estado
+		GameState.played_card = false
+		end_turn_button.visible = false
+		end_turn_button.disabled = false
+		merge_button.visible = false
 		return
 
 	var result_element = FUSION_TABLE[elements_pair]
 	print("Fusão resultou em: ", result_element)
 
-	# devolver as cartas para os decks --> Trocar para ELIMINAR
-	#player_card.global_position = Vector3(0.515, 0.559, 0.064) # ajuste para posição do deck
-	#npc_card.global_position = Vector3(-0.628, 0.559, 0.051) # ajuste para posição do deck NPC
-	#player_card.reparent(player_hand)
-	#npc_card.reparent(npc_hand)
-	
+	# eliminar as cartas usadas
 	player_card.queue_free()
 	npc_card.queue_free()
 
-	# instanciar nova carta e adicionar a ambos decks
-	var new_card_player = card_base_scene.instantiate()
-	var new_card_npc = card_base_scene.instantiate()
-
-	player_hand.add_child(new_card_player)
-	npc_hand.add_child(new_card_npc)
+	# instanciar nova carta para cada deck
+	_add_card_to_hand(player_hand, result_element)
+	_add_card_to_hand(npc_hand, result_element)
 
 	# resetar estado
 	GameState.played_card = false
 	end_turn_button.visible = false
 	end_turn_button.disabled = false
 	merge_button.visible = false
+
+func _reset_card(card: Node3D, hand: Node3D):
+	card.global_position = hand.global_position
+	card.reparent(hand)
+
+func _add_card_to_hand(hand: Node3D, element: String):
+	var card = card_base_scene.instantiate()
+	var mesh = card.get_node("MeshInstance3D")
+	var mat = mesh.get_active_material(0)
+	if mat:
+		mat.albedo_texture = card_textures[element]
+	else:
+		print("⚠️ Material da superfície 0 não encontrado!")
+
+
+	hand.add_child(card)
