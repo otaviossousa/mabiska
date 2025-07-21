@@ -8,7 +8,12 @@ var base_material: Material
 var highlight_material: Material
 var last_click_time := 0.0
 
+var original_scale: Vector3
+var hover_scale: Vector3 = Vector3(0.1, 0.1, 0.1)
+
 func _ready():
+	original_scale = self.scale
+	
 	if get_parent().name == "player_hand":
 		owner_type = "player"
 	else:
@@ -36,12 +41,14 @@ func _on_mouse_entered():
 		return
 	print("Hover sobre carta: ", element)
 	mesh.material_override = highlight_material
+	self.scale = hover_scale
 
 func _on_mouse_exited():
 	if owner_type != "player":
 		return
 	print("Saiu de cima da carta: ", element)
 	mesh.material_override = base_material
+	self.scale = original_scale
 
 func _input_event(camera, event, click_position, click_normal, shape_idx):
 	if owner_type != "player":
