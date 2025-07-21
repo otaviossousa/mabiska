@@ -155,46 +155,36 @@ func _on_merge_pressed():
 	# impedir fusão de cartas iguais
 	if player_card.element == npc_card.element:
 		print("Cartas iguais! Não é possível fundir: ", player_card.element)
-		# devolver as cartas para as mãos
 		_reset_card(player_card, player_hand)
 		_reset_card(npc_card, npc_hand)
-
-		# resetar estado
-		GameState.played_card = false
-		end_turn_button.visible = false
-		end_turn_button.disabled = false
-		merge_button.visible = false
+		_reset_state()
 		return
 
 	var elements_pair = [player_card.element, npc_card.element]
 
 	if not FUSION_TABLE.has(elements_pair):
 		print("Fusão inválida para elementos: ", elements_pair)
-		# devolver as cartas para as mãos
 		_reset_card(player_card, player_hand)
 		_reset_card(npc_card, npc_hand)
-
-		# resetar estado
-		GameState.played_card = false
-		end_turn_button.visible = false
-		end_turn_button.disabled = false
-		merge_button.visible = false
+		_reset_state()
 		return
 
 	var result_element = FUSION_TABLE[elements_pair]
 	print("Fusão resultou em: ", result_element)
 
-	# eliminar as cartas usadas
-	player_card.queue_free()
-	npc_card.queue_free()
+	# remover todas as cartas com os elementos usados
+	_remove_cards_with_element(player_hand, player_card.element)
+	_remove_cards_with_element(player_hand, npc_card.element)
+	_remove_cards_with_element(npc_hand, player_card.element)
+	_remove_cards_with_element(npc_hand, npc_card.element)
 
-	# instanciar nova carta para cada deck
+	# adicionar a carta resultante a ambas as mãos
 	_add_card_to_hand(player_hand, result_element)
 	_add_card_to_hand(npc_hand, result_element)
 
+	_reset_state()
 
-
-	# resetar estado
+func _reset_state():
 	GameState.played_card = false
 	end_turn_button.visible = false
 	end_turn_button.disabled = false
@@ -277,3 +267,8 @@ func _get_npc_start_positions():
 		Vector3(-0.628, 0.559, 0.065),
 		Vector3(-0.971, 0.559, 0.065)
 	]
+
+func _remove_cards_with_element(hand: Node3D, element: String):
+	for card in hand.get_children():
+		if card.has_method("get") and card.get("element") == element:
+			card.queue_free()
