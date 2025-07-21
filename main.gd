@@ -69,74 +69,83 @@ var npc_deck_elements = ["fire", "water", "earth", "air"]
 }
 
 const FUSION_TABLE = {
-	# Basic
+	# Básico + Básico = Secundário
 	["air", "earth"]: "sand",
 	["earth", "air"]: "sand",
-	
-	["fire","air"]: "lightining",
+
+	["fire", "air"]: "lightning",
 	["air", "fire"]: "lightning",
-	
-	["water","air"]:"mist",
+
+	["water", "air"]: "mist",
 	["air", "water"]: "mist",
-	
-	["fire","earth"]: "magma",
+
+	["fire", "earth"]: "magma",
 	["earth", "fire"]: "magma",
-	
-	["water","earth"]: "clay",
+
+	["water", "earth"]: "clay",
 	["earth", "water"]: "clay",
-	
-	["water","fire"]: "steam",
+
+	["water", "fire"]: "steam",
 	["fire", "water"]: "steam",
 
-	# Secondary + basic = terciary
-	["lightning", "earth"]: "magnetite",
-	["lightning", "water"]: "charged mist",
+	# Básico + Secundário = Terciário
 	["magma", "air"]: "glass",
 	["magma", "water"]: "basalt",
-	["vapor", "earth"]: "geyser",
-	["vapor", "air"]: "smoke",
-	["sand", "fire"]: "ash",
+	["magma", "earth"]: "obsidian",
+	["magma", "fire"]: "ceramic",
+
+	["lightning", "earth"]: "magnetite",
+	["lightning", "water"]: "charged mist",
+	["lightning", "fire"]: "stormstone",
+
 	["sand", "water"]: "mud",
-	["clay", "fire"]: "brick",
-	["clay", "air"]: "sand",
+	["sand", "fire"]: "ash",
+	["sand", "air"]: "stained glass",
+	["sand", "earth"]: "frost",
+
 	["mist", "earth"]: "swamp",
 	["mist", "fire"]: "steam",
+	["mist", "air"]: "cloud",
+	["mist", "water"]: "fog",
 
-	# sec + sec = terciary
-	["magma","mist"]: "sand",
-	["mist","magma"]: "sand",
+	["clay", "fire"]: "brick",
+	["clay", "air"]: "guardian",
+	["clay", "earth"]: "idol",
+	["clay", "water"]: "mill",
+
+	["steam", "earth"]: "geyser",
+	["steam", "air"]: "smoke",
+	["steam", "fire"]: "furnace",
+	["steam", "water"]: "mirror",
+
+	# Secundário + Secundário = Terciário
 	["glass", "lightning"]: "radiance",
-	["magnetite", "vapor"]: "engine",
-	["clay", "lightning"]: "animated golem",
-	["mist","sand"]: "earth",
-	["mist", "dust"]: "frosted glass",
-	["magma", "clay"]: "obsidian",
-
-	# Sec + terc = quaternary
-	["sand", "mist"]: "frost",
-	["sand", "vapor"]: "fog",
-	["sand", "magma"]: "cinder",
-	["glass", "vapor"]: "mirror",
-	["glass", "sand"]: "stained glass",
-	["magma", "lightning"]: "stormstone",
-	["clay", "smoke"]: "idol",
-	["magma", "clay"]: "ceramic",
-	["vapor", "mist"]: "cloud",
+	["magnetite", "mist"]: "engine",
+	["magma", "mist"]: "halo",
+	["clay", "lightning"]: "golem",
+	["obsidian", "mist"]: "blade",
 	["glass", "smoke"]: "dark mirror",
+	["magma", "clay"]: "ceramic",
+	["mist", "sand"]: "frost",
 
-	# terc + basic = quaternary
+	# Terciário + Básico = Quaternário
 	["radiance", "earth"]: "crystal",
 	["radiance", "water"]: "prism",
 	["radiance", "air"]: "halo",
 	["radiance", "fire"]: "solar flame",
+
 	["obsidian", "water"]: "shard",
 	["obsidian", "air"]: "blade",
+
 	["engine", "fire"]: "furnace",
 	["engine", "water"]: "mill",
-	["animated golem", "air"]: "spirit golem",
-	["animated golem", "earth"]: "guardian",
-	["frosted glass", "fire"]: "tears of glass"
+
+	["golem", "air"]: "spirit golem",
+	["golem", "earth"]: "guardian",
+
+	["frost", "fire"]: "tears"
 }
+
 
 func _ready():
 
