@@ -1,0 +1,115 @@
+[gd_scene load_steps=19 format=3 uid="uid://dlma21blg7omj"]
+
+[ext_resource type="Script" uid="uid://dcey7m0jm7meh" path="res://main.gd" id="1_5vw27"]
+[ext_resource type="ArrayMesh" uid="uid://bsdx74exeukmj" path="res://assets/3d models/blackjack_table.obj" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://d0rvm77teqxyn" path="res://icon.svg" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://b1p42qi7btf3y" path="res://assets/textures/floor.jpg" id="7_272bh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
+albedo_color = Color(0.0470588, 0.439216, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4c57u"]
+albedo_color = Color(1, 0.0784314, 0.0705882, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efxa6"]
+albedo_color = Color(0.807843, 0.0941176, 0.0431373, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dg77c"]
+albedo_color = Color(0.619608, 0, 0.145098, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycdy4"]
+albedo_color = Color(0.619608, 0, 0.145098, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w48qg"]
+albedo_color = Color(0.619608, 0, 0.145098, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vivmo"]
+albedo_color = Color(0.619608, 0, 0.145098, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cqfq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yaehf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_074og"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
+albedo_texture = ExtResource("2_0xm2m")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7mycd"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5vw27"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
+albedo_texture = ExtResource("7_272bh")
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_5vw27")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.999979, 0.00526386, -0.00374083, -0.000156536, 0.559353, 0.82893, 0.00645582, 0.828913, -0.55934, 0, 1.51619, -0.438095)
+current = true
+
+[node name="BlackjackTable" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.389, 0)
+mesh = ExtResource("1_ig7tw")
+surface_material_override/0 = SubResource("StandardMaterial3D_5vw27")
+surface_material_override/1 = SubResource("StandardMaterial3D_4c57u")
+surface_material_override/2 = SubResource("StandardMaterial3D_efxa6")
+surface_material_override/3 = SubResource("StandardMaterial3D_dg77c")
+surface_material_override/4 = SubResource("StandardMaterial3D_ycdy4")
+surface_material_override/5 = SubResource("StandardMaterial3D_w48qg")
+surface_material_override/6 = SubResource("StandardMaterial3D_vivmo")
+surface_material_override/7 = SubResource("StandardMaterial3D_2cqfq")
+surface_material_override/8 = SubResource("StandardMaterial3D_yaehf")
+surface_material_override/9 = SubResource("StandardMaterial3D_074og")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0261944, 0.999657, 0, -0.999657, 0.0261944, 0, 3.41891, 0.140463)
+
+[node name="player" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.199999, 0, 0.000600415, 0, 0.2, 0, -0.000600415, 0, -0.199999, 0.708097, 0.698901, -0.301993)
+material_override = SubResource("StandardMaterial3D_lquwl")
+mesh = SubResource("PlaneMesh_7mycd")
+
+[node name="npc" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.199999, 0, 0.000600415, 0, 0.2, 0, -0.000600415, 0, -0.199999, -0.669375, 0.699, -0.302)
+material_override = SubResource("StandardMaterial3D_lquwl")
+mesh = SubResource("PlaneMesh_7mycd")
+
+[node name="floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, -0.378928, 1.37231)
+mesh = SubResource("PlaneMesh_5vw27")
+surface_material_override/0 = SubResource("StandardMaterial3D_kek77")
+
+[node name="player_hand" type="Node3D" parent="."]
+
+[node name="npc_hand" type="Node3D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="EndTurnButton" type="Button" parent="CanvasLayer"]
+visible = false
+modulate = Color(0, 0.898039, 0, 1)
+offset_right = 53.0
+offset_bottom = 28.0
+text = "FINALIZAR TURNO"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="MergeButton" type="Button" parent="CanvasLayer2"]
+visible = false
+modulate = Color(1, 0, 1, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -15.5
+offset_right = 34.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "FUNDIR"

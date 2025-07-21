@@ -8,12 +8,15 @@ var base_material: Material
 var highlight_material: Material
 var last_click_time := 0.0
 
+# Guarda estado original do mesh
 var original_scale: Vector3
-var hover_scale: Vector3 = Vector3(0.1, 0.1, 0.1)
+var original_position: Vector3
+
+# Valores para hover (aumentar escala e subir no eixo Z local do mesh)
+var hover_scale: Vector3 = Vector3(2, 2, 2)
+var hover_z_offset := 0.7
 
 func _ready():
-	original_scale = self.scale
-	
 	if get_parent().name == "player_hand":
 		owner_type = "player"
 	else:
@@ -31,44 +34,49 @@ func _ready():
 	highlight_material.emission_enabled = true
 	highlight_material.emission = Color(1, 1, 0) * 0.5  # cor amarelada suave
 	highlight_material.emission_energy_multiplier = 1.0
-	
+
+	# guarda o estado original do mesh para restaurar depois
+	original_scale = mesh.scale
+	original_position = mesh.position
+
 	connect("mouse_entered", _on_mouse_entered)
 	connect("mouse_exited", _on_mouse_exited)
-
 
 func _on_mouse_entered():
 	if owner_type != "player":
 		return
 	print("Hover sobre carta: ", element)
 	mesh.material_override = highlight_material
-	self.scale = hover_scale
+	
+	mesh.scale = hover_scale
+	mesh.position.z = original_position.z + hover_z_offset
 
 func _on_mouse_exited():
 	if owner_type != "player":
 		return
 	print("Saiu de cima da carta: ", element)
 	mesh.material_override = base_material
-	self.scale = original_scale
+	
+	mesh.scale = original_scale
+	mesh.position = original_position
 
+# O resto do script permanece igual...
 func _input_event(camera, event, click_position, click_normal, shape_idx):
 	if owner_type != "player":
 		return
 
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if GameState.played_card:
-			# já jogou uma carta, não pode selecionar mais
 			return
 
-		var now = Time.get_ticks_msec() / 1000.0  # segundos
+		var now = Time.get_ticks_msec() / 1000.0
 		if now - last_click_time < 0.3:
-			# double click detectado
 			play_card()
 			return
 		else:
 			last_click_time = now
 
 		if GameState.selected_card and GameState.selected_card != self:
-			# deseleciona a anterior
 			GameState.selected_card.unhighlight()
 
 		highlight()
@@ -79,7 +87,7 @@ func highlight():
 
 func unhighlight():
 	mesh.material_override = base_material
-	
+
 func play_card():
 	print("Jogou carta: ", element)
 	GameState.played_card = true
@@ -89,6 +97,3 @@ func play_card():
 	global_position = Vector3(0.166, 0.559, 0.579) # posição da mesa
 	unhighlight()
 	return element
-
-
-	
