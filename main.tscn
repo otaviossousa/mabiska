@@ -1,12 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://dlma21blg7omj"]
+[gd_scene load_steps=19 format=3 uid="uid://dlma21blg7omj"]
 
 [ext_resource type="Script" uid="uid://dcey7m0jm7meh" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="ArrayMesh" uid="uid://bsdx74exeukmj" path="res://assets/3d models/blackjack_table.obj" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://d0rvm77teqxyn" path="res://icon.svg" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://clusej4olcn1o" path="res://deck scenes/basic_cards/card_air.tscn" id="4_272bh"]
-[ext_resource type="PackedScene" uid="uid://f75mx7l43g3r" path="res://deck scenes/basic_cards/card_earth.tscn" id="5_5vw27"]
-[ext_resource type="PackedScene" uid="uid://c407p48kqbrw4" path="res://deck scenes/basic_cards/card_fire.tscn" id="6_kek77"]
-[ext_resource type="PackedScene" uid="uid://bbj52qcyieqb2" path="res://deck scenes/basic_cards/card_water.tscn" id="7_4c57u"]
 [ext_resource type="Texture2D" uid="uid://b1p42qi7btf3y" path="res://assets/textures/floor.jpg" id="7_272bh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
@@ -87,31 +83,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_kek77")
 
 [node name="player_hand" type="Node3D" parent="."]
 
-[node name="card_air" parent="player_hand" instance=ExtResource("4_272bh")]
-transform = Transform3D(-0.05, 0, -4.37114e-09, 0, 0.05, 0, 4.37114e-09, 0, -0.05, 0.96, 0.559, 0.065)
-
-[node name="card_earth" parent="player_hand" instance=ExtResource("5_5vw27")]
-transform = Transform3D(-0.05, 0, -4.37114e-09, 0, 0.05, 0, 4.37114e-09, 0, -0.05, 0.813839, 0.559326, 0.065)
-
-[node name="card_fire" parent="player_hand" instance=ExtResource("6_kek77")]
-transform = Transform3D(-0.05, 0, -4.37114e-09, 0, 0.05, 0, 4.37114e-09, 0, -0.05, 0.668353, 0.559, 0.062)
-
-[node name="card_water" parent="player_hand" instance=ExtResource("7_4c57u")]
-transform = Transform3D(-0.05, 0, -4.37114e-09, 0, 0.05, 0, 4.37114e-09, 0, -0.05, 0.515037, 0.559, 0.0643651)
-
 [node name="npc_hand" type="Node3D" parent="."]
-
-[node name="card_fire" parent="npc_hand" instance=ExtResource("6_kek77")]
-transform = Transform3D(-0.05, 0, -4.37114e-09, 0, 0.05, 0, 4.37114e-09, 0, -0.05, -0.467608, 0.559, 0.0612085)
-
-[node name="card_earth" parent="npc_hand" instance=ExtResource("5_5vw27")]
-transform = Transform3D(-0.05, 0, -4.37114e-09, 0, 0.05, 0, 4.37114e-09, 0, -0.05, -0.78501, 0.559, 0.062)
-
-[node name="card_water" parent="npc_hand" instance=ExtResource("7_4c57u")]
-transform = Transform3D(-0.05, 0, -4.37114e-09, 0, 0.05, 0, 4.37114e-09, 0, -0.05, -0.628374, 0.559, 0.0510764)
-
-[node name="card_air" parent="npc_hand" instance=ExtResource("4_272bh")]
-transform = Transform3D(-0.05, 0, -4.37114e-09, 0, 0.05, 0, 4.37114e-09, 0, -0.05, -0.971218, 0.559, 0.0632952)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

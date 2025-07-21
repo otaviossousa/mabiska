@@ -5,10 +5,21 @@ extends Node3D
 @onready var end_turn_button := $CanvasLayer/EndTurnButton
 @onready var merge_button = $CanvasLayer2/MergeButton
 
+#Import basic elements_cards
+var player_deck_elements = ["fire", "water", "earth", "air"]
+var npc_deck_elements = ["fire", "water", "earth", "air"]
+
 #import secondary cards
-@onready var card_base_scene := preload("res://deck scenes/secondary_cards/card_base.tscn")
+@onready var card_base_scene := preload("res://deck scenes/card_base.tscn")
 
 @onready var card_textures = {
+	# bases
+	"fire": preload("res://assets/cards-assets/base_cards/20_Element_Fire.png"),
+	"water": preload("res://assets/cards-assets/base_cards/23_Element_Water.png"),
+	"earth": preload("res://assets/cards-assets/base_cards/25_Element_Earth.png"),
+	"air": preload("res://assets/cards-assets/base_cards/22_Element_Air.png"),
+	
+	# secondary
 	"sand": preload("res://assets/cards-assets/secondary_cards/Element_Sand.png"),
 	"lightning": preload("res://assets/cards-assets/secondary_cards/Element_Lightning.png"),
 	"mist": preload("res://assets/cards-assets/secondary_cards/Element_Mist.png"),
@@ -85,6 +96,10 @@ const FUSION_TABLE = {
 }
 
 func _ready():
+
+	_initialize_hand(player_hand, player_deck_elements, _get_player_start_positions())
+	_initialize_hand(npc_hand, npc_deck_elements, _get_npc_start_positions())
+	
 	end_turn_button.visible = false
 	end_turn_button.connect("pressed", _on_end_turn_pressed)
 	
@@ -198,3 +213,39 @@ func _add_card_to_hand(hand: Node3D, element: String):
 
 
 	hand.add_child(card)
+
+func _initialize_hand(hand_node: Node3D, elements: Array, start_positions: Array):
+	for i in range(elements.size()):
+		var element = elements[i]
+		var card = card_base_scene.instantiate()
+		card.element = element
+
+		var mesh = card.get_node("MeshInstance3D")
+		var mat = mesh.get_active_material(0)
+		if mat and card_textures.has(element):
+			mat.albedo_texture = card_textures[element]
+		else:
+			print("⚠️ Textura não encontrada para: ", element)
+
+		hand_node.add_child(card)
+
+		# Posição inicial (opcional: você pode definir um array com as posições ou calcular dinamicamente)
+		if i < start_positions.size():
+			card.position = start_positions[i]
+
+
+func _get_player_start_positions():
+	return [
+		Vector3(0.96, 0.559, 0.065),
+		Vector3(0.814, 0.559, 0.065),
+		Vector3(0.668, 0.559, 0.065),
+		Vector3(0.515, 0.559, 0.065)
+	]
+
+func _get_npc_start_positions():
+	return [
+		Vector3(-0.468, 0.559, 0.065),
+		Vector3(-0.785, 0.559, 0.065),
+		Vector3(-0.628, 0.559, 0.065),
+		Vector3(-0.971, 0.559, 0.065)
+	]
