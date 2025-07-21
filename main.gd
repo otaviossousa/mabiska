@@ -192,6 +192,8 @@ func _on_merge_pressed():
 	_add_card_to_hand(player_hand, result_element)
 	_add_card_to_hand(npc_hand, result_element)
 
+
+
 	# resetar estado
 	GameState.played_card = false
 	end_turn_button.visible = false
@@ -215,6 +217,27 @@ func _add_card_to_hand(hand: Node3D, element: String):
 		print("⚠️ Textura não encontrada para: ", element)
 
 	hand.add_child(card)
+	card.global_position = position
+# escolher posição livre
+	var positions = _get_player_start_positions() if hand == player_hand else _get_npc_start_positions()
+	var used_positions = []
+	for child in hand.get_children():
+		used_positions.append(child.global_position)
+
+	for pos in positions:
+		var found = false
+		for used in used_positions:
+			if pos.is_equal_approx(used):
+				found = true
+				break
+		if not found:
+			card.global_position = pos
+			return
+
+	# fallback: se não encontrar posição livre
+	card.global_position = hand.global_position
+	print("⚠️ Nenhuma posição livre para adicionar carta.")
+
 
 func _initialize_hand(hand_node: Node3D, elements: Array, start_positions: Array):
 	for i in range(elements.size()):
