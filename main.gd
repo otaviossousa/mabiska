@@ -205,12 +205,14 @@ func _reset_card(card: Node3D, hand: Node3D):
 func _add_card_to_hand(hand: Node3D, element: String):
 	var card = card_base_scene.instantiate()
 	var mesh = card.get_node("MeshInstance3D")
-	var mat = mesh.get_active_material(0)
-	if mat:
+	var mat = mesh.get_active_material(0).duplicate()
+	
+	mesh.set_surface_override_material(0, mat)
+
+	if mat and card_textures.has(element):
 		mat.albedo_texture = card_textures[element]
 	else:
-		print("⚠️ Material da superfície 0 não encontrado!")
-
+		print("⚠️ Textura não encontrada para: ", element)
 
 	hand.add_child(card)
 
@@ -221,11 +223,14 @@ func _initialize_hand(hand_node: Node3D, elements: Array, start_positions: Array
 		card.element = element
 
 		var mesh = card.get_node("MeshInstance3D")
-		var mat = mesh.get_active_material(0)
+		var mat = mesh.get_active_material(0).duplicate()
+		mesh.set_surface_override_material(0, mat)
+
 		if mat and card_textures.has(element):
 			mat.albedo_texture = card_textures[element]
 		else:
 			print("⚠️ Textura não encontrada para: ", element)
+
 
 		hand_node.add_child(card)
 
