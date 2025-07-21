@@ -103,16 +103,19 @@ const FUSION_TABLE = {
 	["mist", "fire"]: "steam",
 
 	# sec + sec = terciary
+	["magma","mist"]: "sand",
+	["mist","magma"]: "sand",
 	["glass", "lightning"]: "radiance",
 	["magnetite", "vapor"]: "engine",
 	["clay", "lightning"]: "animated golem",
+	["mist","sand"]: "earth",
 	["mist", "dust"]: "frosted glass",
 	["magma", "clay"]: "obsidian",
 
 	# Sec + terc = quaternary
 	["sand", "mist"]: "frost",
 	["sand", "vapor"]: "fog",
-	["sand", "magma"]: "cinders",
+	["sand", "magma"]: "cinder",
 	["glass", "vapor"]: "mirror",
 	["glass", "sand"]: "stained glass",
 	["magma", "lightning"]: "stormstone",
@@ -236,9 +239,10 @@ func _reset_card(card: Node3D, hand: Node3D):
 
 func _add_card_to_hand(hand: Node3D, element: String):
 	var card = card_base_scene.instantiate()
+	card.element = element 
+
 	var mesh = card.get_node("MeshInstance3D")
 	var mat = mesh.get_active_material(0).duplicate()
-	
 	mesh.set_surface_override_material(0, mat)
 
 	if mat and card_textures.has(element):
@@ -247,27 +251,28 @@ func _add_card_to_hand(hand: Node3D, element: String):
 		print("⚠️ Textura não encontrada para: ", element)
 
 	hand.add_child(card)
-	card.global_position = position
-# escolher posição livre
+
+	# calcular posição livre
 	var positions = _get_player_start_positions() if hand == player_hand else _get_npc_start_positions()
-	var used_positions = []
+	var used_positions: Array = []
 	for child in hand.get_children():
 		used_positions.append(child.global_position)
 
+	var assigned = false
 	for pos in positions:
-		var found = false
+		var occupied = false
 		for used in used_positions:
 			if pos.is_equal_approx(used):
-				found = true
+				occupied = true
 				break
-		if not found:
+		if not occupied:
 			card.global_position = pos
-			return
+			assigned = true
+			break
 
-	# fallback: se não encontrar posição livre
-	card.global_position = hand.global_position
-	print("⚠️ Nenhuma posição livre para adicionar carta.")
-
+	if not assigned:
+		card.global_position = hand.global_position
+		print("⚠️ Nenhuma posição livre para adicionar carta.")
 
 func _initialize_hand(hand_node: Node3D, elements: Array, start_positions: Array):
 	for i in range(elements.size()):
