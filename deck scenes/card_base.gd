@@ -14,7 +14,7 @@ var original_position: Vector3
 
 # Valores para hover (aumentar escala e subir no eixo Z local do mesh)
 var hover_scale: Vector3 = Vector3(2, 2, 2)
-var hover_z_offset := 0.7
+var hover_z_offset := 1.5
 
 func _ready():
 	if get_parent().name == "player_hand":
