@@ -168,3 +168,24 @@ anchor_bottom = 0.0756173
 theme = ExtResource("5_lquwl")
 text = "FECHAR PAINEL"
 metadata/_edit_use_anchors_ = true
+
+[node name="CanvasReset" type="CanvasLayer" parent="."]
+
+[node name="ResetButton" type="Button" parent="CanvasReset"]
+visible = false
+modulate = Color(1, 1, 0, 1)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -105.5
+offset_top = -59.0
+offset_right = 105.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "REINICIAR PARTIDA"
+
+[connection signal="pressed" from="CanvasReset/ResetButton" to="." method="_on_reset_button_pressed"]

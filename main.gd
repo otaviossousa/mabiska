@@ -9,7 +9,7 @@ extends Node3D
 var player_deck_elements = ["fire", "water", "earth", "air"]
 var npc_deck_elements = ["fire", "water", "earth", "air"]
 
-#import secondary cards
+#import cards scenes
 @onready var card_base_scene := preload("res://deck scenes/card_base.tscn")
 
 @onready var card_textures = {
@@ -146,7 +146,7 @@ const FUSION_TABLE = {
 	["golem", "air"]: "spirit golem",
 	["golem", "earth"]: "guardian",
 	["frost", "fire"]: "tears",
-	["basalt", "air"]: "basalt air",
+	["basalt", "air"]: "basalt dust",
 	["charged mist","earth"]: "thunder",
 	["geyser","air"]: "aureol"
 }
@@ -240,6 +240,7 @@ func _on_merge_pressed():
 	_add_card_to_hand(npc_hand, result_element)
 
 	_reset_state()
+	call_deferred("_check_end_game_condition")
 
 func _reset_state():
 	GameState.played_card = false
@@ -331,3 +332,34 @@ func _remove_cards_with_element(hand: Node3D, element: String):
 	for card in hand.get_children():
 		if card.has_method("get") and card.get("element") == element:
 			card.queue_free()
+
+
+func _on_reset_button_pressed() -> void:
+	reset_game()
+	
+func reset_game():
+	# Limpa mãos
+	for card in player_hand.get_children():
+		card.queue_free()
+	for card in npc_hand.get_children():
+		card.queue_free()
+
+	# Recria mãos com as cartas iniciais
+	_initialize_hand(player_hand, player_deck_elements, _get_player_start_positions())
+	_initialize_hand(npc_hand, npc_deck_elements, _get_npc_start_positions())
+
+	# Reset estados globais
+	GameState.played_card = false
+	GameState.selected_card = null
+	GameState.player_played_card = null
+	GameState.player_card_type = ""
+
+	# Esconde o botão
+	$CanvasReset/ResetButton.visible = false
+
+func _check_end_game_condition():
+	print("Player hand count: ", player_hand.get_child_count())
+	print("NPC hand count: ", npc_hand.get_child_count())
+	if player_hand.get_child_count() == 3 and npc_hand.get_child_count() == 3:
+		print("Fim de jogo! Só resta uma carta para cada lado.")
+		$CanvasReset/ResetButton.visible = true
