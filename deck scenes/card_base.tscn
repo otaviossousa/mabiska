@@ -23,4 +23,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0170441, 0.0045624, -0.0196
 shape = SubResource("BoxShape3D_myu8w")
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(-10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 0, 1.87042, 5.96344)
+transform = Transform3D(-10, 5.60831e-14, -8.74228e-07, -8.73664e-07, -0.359111, 9.99355, -3.13945e-08, 9.99355, 0.359111, 0, 1.87042, 5.96344)
