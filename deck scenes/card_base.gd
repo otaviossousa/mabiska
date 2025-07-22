@@ -69,26 +69,29 @@ func _input_event(camera, event, click_position, click_normal, shape_idx):
 	if owner_type != "player":
 		return
 
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+	if event is InputEventMouseButton and event.pressed:
 		if GameState.played_card:
 			return
 
-		var now = Time.get_ticks_msec() / 1000.0
-		if now - last_click_time < 0.3:
-			# Duplo clique: jogar carta
-			play_card()
-			return
-		else:
-			last_click_time = now
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			# Botão esquerdo → duplo clique para jogar carta
+			var now = Time.get_ticks_msec() / 1000.0
+			if now - last_click_time < 0.3:
+				play_card()
+				return
+			else:
+				last_click_time = now
 
-		# Clique simples: abrir painel de descrição
-		show_card_details()
+			# Seleciona esta carta mesmo em clique simples
+			if GameState.selected_card and GameState.selected_card != self:
+				GameState.selected_card.unhighlight()
 
-		if GameState.selected_card and GameState.selected_card != self:
-			GameState.selected_card.unhighlight()
+			highlight()
+			GameState.selected_card = self
 
-		highlight()
-		GameState.selected_card = self
+		elif event.button_index == MOUSE_BUTTON_RIGHT:
+			# Botão direito → abre painel de descrição
+			show_card_details()
 
 func highlight():
 	mesh.material_override = highlight_material
