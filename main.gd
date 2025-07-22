@@ -73,84 +73,7 @@ var npc_deck_elements = ["fire", "water", "earth", "air"]
 	"silhain": preload("res://assets/cards-assets/quartenary_cards/Element_Silhain.png")
 }
 
-const FUSION_TABLE = {
-	# Básico + Básico = Secundário
-	["air", "earth"]: "sand",
-	["earth", "air"]: "sand",
-
-	["fire", "air"]: "lightning",
-	["air", "fire"]: "lightning",
-
-	["water", "air"]: "mist",
-	["air", "water"]: "mist",
-
-	["fire", "earth"]: "magma",
-	["earth", "fire"]: "magma",
-
-	["water", "earth"]: "clay",
-	["earth", "water"]: "clay",
-
-	["water", "fire"]: "steam",
-	["fire", "water"]: "steam",
-
-	# Básico + Secundário = Terciário
-	["magma", "air"]: "glass",
-	["magma", "water"]: "basalt",
-	["magma", "earth"]: "obsidian",
-	["magma", "fire"]: "ceramic",
-
-	["lightning", "earth"]: "magnetite",
-	["lightning", "water"]: "charged mist",
-	["lightning", "fire"]: "stormstone",
-
-	["sand", "water"]: "mud",
-	["sand", "fire"]: "ash",
-	["sand", "air"]: "stained glass",
-	["sand", "earth"]: "frost",
-
-	["mist", "earth"]: "swamp",
-	["mist", "fire"]: "steam",
-	["mist", "air"]: "cloud",
-	["mist", "water"]: "fog",
-
-	["clay", "fire"]: "brick",
-	["clay", "air"]: "guardian",
-	["clay", "earth"]: "idol",
-	["clay", "water"]: "mill",
-
-	["steam", "earth"]: "geyser",
-	["steam", "air"]: "smoke",
-	["steam", "fire"]: "furnace",
-	["steam", "water"]: "mirror",
-
-	# Secundário + Secundário = Terciário
-	["glass", "lightning"]: "radiance",
-	["magnetite", "mist"]: "engine",
-	["magma", "mist"]: "halo",
-	["clay", "lightning"]: "golem",
-	["obsidian", "mist"]: "blade",
-	["glass", "smoke"]: "dark mirror",
-	["magma", "clay"]: "ceramic",
-	["mist", "sand"]: "velarim",
-	["steam", "sand"]: "silhain",
-
-	# Terciário + Básico = Quaternário
-	["radiance", "earth"]: "crystal",
-	["radiance", "water"]: "prism",
-	["radiance", "air"]: "halo",
-	["radiance", "fire"]: "solar flame",
-	["obsidian", "water"]: "shard",
-	["obsidian", "air"]: "blade",
-	["engine", "fire"]: "furnace",
-	["engine", "water"]: "mill",
-	["golem", "air"]: "spirit golem",
-	["golem", "earth"]: "guardian",
-	["frost", "fire"]: "tears",
-	["basalt", "air"]: "basalt dust",
-	["charged mist","earth"]: "thunder",
-	["geyser","air"]: "aureol"
-}
-
+const FusionTable = preload("res://data/fusion_cards.gd")
 
 func _ready():
 
@@ -217,16 +140,15 @@ func _on_merge_pressed():
 		_reset_state()
 		return
 
-	var elements_pair = [player_card.element, npc_card.element]
+	var result_element = FusionTable.get_fusion_result(player_card.element, npc_card.element)
 
-	if not FUSION_TABLE.has(elements_pair):
-		print("Fusão inválida para elementos: ", elements_pair)
+	if result_element == "":
+		print("Fusão inválida para elementos: ", player_card.element, " + ", npc_card.element)
 		_reset_card(player_card, player_hand)
 		_reset_card(npc_card, npc_hand)
 		_reset_state()
 		return
 
-	var result_element = FUSION_TABLE[elements_pair]
 	print("Fusão resultou em: ", result_element)
 
 	# remover todas as cartas com os elementos usados
