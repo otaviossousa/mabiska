@@ -65,7 +65,12 @@ var npc_deck_elements = ["fire", "water", "earth", "air"]
 	"spirit golem": preload("res://assets/cards-assets/quartenary_cards/Element_SpiritGolem.png"),
 	"stained glass": preload("res://assets/cards-assets/quartenary_cards/Element_Stained Glass.png"),
 	"storm stone": preload("res://assets/cards-assets/quartenary_cards/Element_Stormstone.png"),
-	"tears": preload("res://assets/cards-assets/quartenary_cards/Element_Tears.png")
+	"tears": preload("res://assets/cards-assets/quartenary_cards/Element_Tears.png"),
+	"basalt dust": preload("res://assets/cards-assets/quartenary_cards/Element_BasaltDust.png"),
+	"thunder": preload("res://assets/cards-assets/quartenary_cards/Element_Thunder.png"),
+	"velarim": preload("res://assets/cards-assets/quartenary_cards/Element_Velarim.png"),
+	"aureol": preload("res://assets/cards-assets/quartenary_cards/Element_Aureolo.png"),
+	"silhain": preload("res://assets/cards-assets/quartenary_cards/Element_Silhain.png")
 }
 
 const FUSION_TABLE = {
@@ -126,24 +131,24 @@ const FUSION_TABLE = {
 	["obsidian", "mist"]: "blade",
 	["glass", "smoke"]: "dark mirror",
 	["magma", "clay"]: "ceramic",
-	["mist", "sand"]: "frost",
+	["mist", "sand"]: "velarim",
+	["steam", "sand"]: "silhain",
 
 	# Terciário + Básico = Quaternário
 	["radiance", "earth"]: "crystal",
 	["radiance", "water"]: "prism",
 	["radiance", "air"]: "halo",
 	["radiance", "fire"]: "solar flame",
-
 	["obsidian", "water"]: "shard",
 	["obsidian", "air"]: "blade",
-
 	["engine", "fire"]: "furnace",
 	["engine", "water"]: "mill",
-
 	["golem", "air"]: "spirit golem",
 	["golem", "earth"]: "guardian",
-
-	["frost", "fire"]: "tears"
+	["frost", "fire"]: "tears",
+	["basalt", "air"]: "basalt air",
+	["charged mist","earth"]: "thunder",
+	["geyser","air"]: "aureol"
 }
 
 
