@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://dlma21blg7omj"]
+[gd_scene load_steps=20 format=3 uid="uid://dlma21blg7omj"]
 
 [ext_resource type="Script" uid="uid://dcey7m0jm7meh" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="ArrayMesh" uid="uid://bsdx74exeukmj" path="res://assets/3d models/blackjack_table.obj" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://d0rvm77teqxyn" path="res://icon.svg" id="2_0xm2m"]
+[ext_resource type="Theme" uid="uid://5vu7cke1qphj" path="res://globals/new_theme.tres" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://b1p42qi7btf3y" path="res://assets/textures/floor.jpg" id="7_272bh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
@@ -113,3 +114,55 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "FUNDIR"
+
+[node name="CanvasCard" type="CanvasLayer" parent="."]
+
+[node name="CardDetailPanel" type="Control" parent="CanvasCard"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasCard/CardDetailPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.335646
+anchor_top = 0.0123827
+anchor_right = 0.992764
+anchor_bottom = 0.986148
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.521569)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasCard/CardDetailPanel/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasCard/CardDetailPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.334
+anchor_bottom = 0.994
+offset_top = 105.0
+offset_right = 0.231964
+offset_bottom = -0.112
+
+[node name="TextureRect" type="TextureRect" parent="CanvasCard/CardDetailPanel/VBoxContainer"]
+layout_mode = 2
+expand_mode = 5
+
+[node name="Button" type="Button" parent="CanvasCard/CardDetailPanel"]
+layout_mode = 0
+anchor_right = 0.330729
+anchor_bottom = 0.0756173
+theme = ExtResource("5_lquwl")
+text = "FECHAR PAINEL"
+metadata/_edit_use_anchors_ = true
