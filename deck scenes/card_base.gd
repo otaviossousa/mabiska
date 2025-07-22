@@ -38,10 +38,9 @@ func _ready():
 	# cria o material destacado
 	highlight_material = base_material.duplicate()
 	highlight_material.emission_enabled = true
-	highlight_material.emission = Color(1, 1, 0) * 0.5  # cor amarelada suave
+	highlight_material.emission = Color(1, 1, 0) * 0.5
 	highlight_material.emission_energy_multiplier = 1.0
 
-	# guarda o estado original do mesh para restaurar depois
 	original_scale = mesh.scale
 	original_position = mesh.position
 
@@ -66,21 +65,24 @@ func _on_mouse_exited():
 	mesh.position = original_position
 	label_3d.visible = false
 
-# O resto do script permanece igual...
 func _input_event(camera, event, click_position, click_normal, shape_idx):
 	if owner_type != "player":
 		return
 
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 		if GameState.played_card:
 			return
 
 		var now = Time.get_ticks_msec() / 1000.0
 		if now - last_click_time < 0.3:
+			# Duplo clique: jogar carta
 			play_card()
 			return
 		else:
 			last_click_time = now
+
+		# Clique simples: abrir painel de descrição
+		show_card_details()
 
 		if GameState.selected_card and GameState.selected_card != self:
 			GameState.selected_card.unhighlight()
@@ -100,6 +102,13 @@ func play_card():
 	GameState.player_played_card = self
 	GameState.selected_card = null
 	GameState.player_card_type = ""
-	global_position = Vector3(0.166, 0.559, 0.579) # posição da mesa
+	global_position = Vector3(0.166, 0.559, 0.579)
 	unhighlight()
 	return element
+
+func show_card_details():
+	var panel = get_tree().get_root().get_node("main/CanvasCard/CardDetailPanel")
+	if panel:
+		panel.show_card(mesh.get_active_material(0).albedo_texture, "Descrição da carta: " + element.capitalize())
+	else:
+		push_error("❌ CardDetailPanel não encontrado na cena!")

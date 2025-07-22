@@ -2,7 +2,7 @@ extends Control
 
 @onready var color_rect = $ColorRect
 @onready var texture_rect = $VBoxContainer/TextureRect
-@onready var label = $VBoxContainer/Label
+@onready var label = $ColorRect/Label
 @onready var close_button = $Button
 
 func _ready():
@@ -11,6 +11,7 @@ func _ready():
 	close_button.pressed.connect(_on_close_pressed)
 
 func show_card(texture: Texture2D, description: String):
+	description ="Aqui é uma descrição"
 	texture_rect.texture = texture
 	label.text = description
 	mouse_filter = Control.MOUSE_FILTER_STOP
