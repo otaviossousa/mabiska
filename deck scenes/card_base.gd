@@ -8,6 +8,8 @@ var base_material: Material
 var highlight_material: Material
 var last_click_time := 0.0
 
+var label_3d : Label3D
+
 # Guarda estado original do mesh
 var original_scale: Vector3
 var original_position: Vector3
@@ -21,6 +23,10 @@ func _ready():
 		owner_type = "player"
 	else:
 		owner_type = "npc"
+	
+	label_3d = $Label3D
+	label_3d.text = element.capitalize() + " card"
+	label_3d.visible = false  # começa oculto
 
 	mesh = $MeshInstance3D
 	base_material = mesh.get_active_material(0)
@@ -47,18 +53,18 @@ func _on_mouse_entered():
 		return
 	print("Hover sobre carta: ", element)
 	mesh.material_override = highlight_material
-	
 	mesh.scale = hover_scale
 	mesh.position.z = original_position.z + hover_z_offset
+	label_3d.visible = true
 
 func _on_mouse_exited():
 	if owner_type != "player":
 		return
 	print("Saiu de cima da carta: ", element)
 	mesh.material_override = base_material
-	
 	mesh.scale = original_scale
 	mesh.position = original_position
+	label_3d.visible = false
 
 # O resto do script permanece igual...
 func _input_event(camera, event, click_position, click_normal, shape_idx):
