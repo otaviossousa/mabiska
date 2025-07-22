@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://dlma21blg7omj"]
+[gd_scene load_steps=21 format=3 uid="uid://dlma21blg7omj"]
 
 [ext_resource type="Script" uid="uid://dcey7m0jm7meh" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="ArrayMesh" uid="uid://bsdx74exeukmj" path="res://assets/3d models/blackjack_table.obj" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://d0rvm77teqxyn" path="res://icon.svg" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://cdn31vsunl51v" path="res://card_detail_panel.gd" id="5_7mycd"]
 [ext_resource type="Theme" uid="uid://5vu7cke1qphj" path="res://globals/new_theme.tres" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://b1p42qi7btf3y" path="res://assets/textures/floor.jpg" id="7_272bh"]
 
@@ -124,6 +125,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("5_7mycd")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasCard/CardDetailPanel"]
 layout_mode = 1
