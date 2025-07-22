@@ -153,9 +153,9 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.334
 anchor_bottom = 0.994
-offset_top = 105.0
+offset_top = 78.0
 offset_right = 0.231964
-offset_bottom = -0.112
+offset_bottom = -4.112
 
 [node name="TextureRect" type="TextureRect" parent="CanvasCard/CardDetailPanel/VBoxContainer"]
 layout_mode = 2
