@@ -170,8 +170,6 @@ func _initialize_hand(hand_node: Node3D, elements: Array, start_positions: Array
 		else:
 			print("⚠️ Textura não encontrada para: ", element)
 
-
-
 		hand_node.add_child(card)
 
 		# Posição inicial (opcional: você pode definir um array com as posições ou calcular dinamicamente)

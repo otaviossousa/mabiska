@@ -3,51 +3,40 @@ extends Node
 const FUSION_TABLE = {
 	# Básico + Básico = Secundário
 	["air", "earth"]: "sand",
-	["earth", "air"]: "sand",
-
-	["fire", "air"]: "lightning",
 	["air", "fire"]: "lightning",
-
-	["water", "air"]: "mist",
 	["air", "water"]: "mist",
-
-	["fire", "earth"]: "magma",
 	["earth", "fire"]: "magma",
-
-	["water", "earth"]: "clay",
 	["earth", "water"]: "clay",
-
-	["water", "fire"]: "steam",
 	["fire", "water"]: "steam",
 
 	# Básico + Secundário = Terciário
-	["magma", "air"]: "glass",
+	["air", "magma"]: "glass",
 	["magma", "water"]: "basalt",
-	["magma", "earth"]: "obsidian",
-	["magma", "fire"]: "ceramic",
+	["earth", "magma"]: "obsidian",
+	["fire", "magma"]: "ceramic",
 
-	["lightning", "earth"]: "magnetite",
+	["earth", "lightning"]: "magnetite",
 	["lightning", "water"]: "charged mist",
-	["lightning", "fire"]: "stormstone",
+	["fire", "lightning"]: "stormstone",
 
 	["sand", "water"]: "mud",
-	["sand", "fire"]: "ash",
-	["sand", "air"]: "stained glass",
-	["sand", "earth"]: "frost",
+	["fire", "sand"]: "ash",
+	["air", "sand"]: "stained glass",
+	["earth", "sand"]: "frost",
 
-	["mist", "earth"]: "swamp",
-	["mist", "fire"]: "steam",
-	["mist", "air"]: "cloud",
+	["earth", "mist"]: "swamp",
+	["fire", "mist"]: "steam",
+	["air", "mist"]: "cloud",
 	["mist", "water"]: "fog",
 
 	["clay", "fire"]: "brick",
-	["clay", "air"]: "guardian",
+	["air", "clay"]: "guardian",
 	["clay", "earth"]: "idol",
 	["clay", "water"]: "mill",
 
-	["steam", "earth"]: "geyser",
-	["steam", "air"]: "smoke",
-	["steam", "fire"]: "furnace",
+	["earth", "steam"]: "geyser",
+	["air", "steam"]: "smoke",
+	["fire", "steam"]: "furnace",
 	["steam", "water"]: "mirror",
 
 	# Secundário + Secundário = Terciário
@@ -55,27 +44,27 @@ const FUSION_TABLE = {
 	["magnetite", "mist"]: "engine",
 	["magma", "mist"]: "halo",
 	["clay", "lightning"]: "golem",
-	["obsidian", "mist"]: "blade",
+	["mist", "obsidian"]: "blade",
 	["glass", "smoke"]: "dark mirror",
-	["magma", "clay"]: "ceramic",
+	["clay", "magma"]: "ceramic",
 	["mist", "sand"]: "velarim",
-	["steam", "sand"]: "silhain",
+	["sand", "steam"]: "silhain",
 
 	# Terciário + Básico = Quaternário
-	["radiance", "earth"]: "crystal",
+	["earth", "radiance"]: "crystal",
 	["radiance", "water"]: "prism",
-	["radiance", "air"]: "halo",
-	["radiance", "fire"]: "solar flame",
+	["air", "radiance"]: "halo",
+	["fire", "radiance"]: "solar flame",
 	["obsidian", "water"]: "shard",
-	["obsidian", "air"]: "blade",
-	["engine", "fire"]: "furnace",
+	["air", "obsidian"]: "blade",
+	["fire", "engine"]: "furnace",
 	["engine", "water"]: "mill",
-	["golem", "air"]: "spirit golem",
-	["golem", "earth"]: "guardian",
-	["frost", "fire"]: "tears",
-	["basalt", "air"]: "basalt dust",
+	["air", "golem"]: "spirit golem",
+	["earth", "golem"]: "guardian",
+	["fire", "frost"]: "tears",
+	["air", "basalt"]: "basalt dust",
 	["charged mist","earth"]: "thunder",
-	["geyser","air"]: "aureol"
+	["air","geyser"]: "aureol",
 }
 
 static func get_fusion_result(e1: String, e2: String) -> String:
