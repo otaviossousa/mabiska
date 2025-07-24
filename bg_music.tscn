@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://r5ocp8mub0av"]
+
+[ext_resource type="AudioStream" uid="uid://d1325ukfxq4n" path="res://assets/sound/misanthrop_music.mp3" id="1_p1osb"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+
+[node name="MisanthropMusic" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-1, 1)
+stream = ExtResource("1_p1osb")
+autoplay = true
