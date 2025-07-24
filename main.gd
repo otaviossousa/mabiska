@@ -45,7 +45,9 @@ func _on_end_turn_pressed():
 		print("NPC não tem cartas")
 		return
 
-	# tentar escolher uma carta diferente da do player
+	# Embaralhar as cartas do NPC
+	npc_cards.shuffle()
+
 	var npc_card = null
 	for card in npc_cards:
 		if card.element != player_card.element:
