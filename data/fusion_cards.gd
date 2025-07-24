@@ -39,7 +39,7 @@ const FUSION_TABLE = {
 	["fire", "steam"]: "furnace",
 	["steam", "water"]: "mirror",
 
-	# Secundário + Secundário = Terciário
+	# Secundário + Secundário = quaternário
 	["glass", "lightning"]: "radiance",
 	["magnetite", "mist"]: "engine",
 	["magma", "mist"]: "halo",
@@ -65,6 +65,7 @@ const FUSION_TABLE = {
 	["air", "basalt"]: "basalt dust",
 	["charged mist","earth"]: "thunder",
 	["air","geyser"]: "aureol",
+	
 	["magnetite","water"]: "philo"
 }
 

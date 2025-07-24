@@ -13,7 +13,6 @@ var npc_deck_elements = ["fire", "water", "earth", "air"]
 @onready var card_base_scene := preload("res://deck scenes/card_base.tscn")
 
 const CardTextures = preload("res://data/texture_cards.gd")
-
 const FusionTable = preload("res://data/fusion_cards.gd")
 
 func _ready():
@@ -93,6 +92,23 @@ func _on_merge_pressed():
 		return
 
 	print("Fusão resultou em: ", result_element)
+	
+	# Verificar progressão da fusão especial
+	var a = player_card.element
+	var b = npc_card.element
+
+	# Ordenar os elementos para fusões não dependerem da ordem
+	var sorted = [a, b]
+	sorted.sort()
+
+# Etapas da busca pela "philo"
+	if sorted == ["air", "fire"] and result_element == "lightning":
+		print("Parabéns! Está no rumo certo... a luz surgiu!")
+	elif sorted == ["earth", "lightning"] and result_element == "magnetite":
+		print("Muito bem! Você criou a magnetita! Mais uma fusão e chegará ao final")
+	elif sorted == ["magnetite", "water"] and result_element == "philo":
+		print("Parabéns! Você venceu! Criou a lendária Pedra Filosofal!")
+
 
 	# remover todas as cartas com os elementos usados
 	_remove_cards_with_element(player_hand, player_card.element)
