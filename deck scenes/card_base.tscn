@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4ubwjgajcvsg"]
+[gd_scene load_steps=7 format=3 uid="uid://c4ubwjgajcvsg"]
 
 [ext_resource type="Script" uid="uid://fs5ch5ccjp7l" path="res://deck scenes/card_base.gd" id="1_myu8w"]
+[ext_resource type="AudioStream" uid="uid://bty4unnmfvi7o" path="res://assets/sound/sfx/card-click.mp3" id="2_cynal"]
+[ext_resource type="AudioStream" uid="uid://yol2kd5r3w5p" path="res://assets/sound/sfx/hover-sound.mp3" id="3_5iha5"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xwuhi"]
 
@@ -24,3 +26,9 @@ shape = SubResource("BoxShape3D_myu8w")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(-10, 5.60831e-14, -8.74228e-07, -8.73664e-07, -0.359111, 9.99355, -3.13945e-08, 9.99355, 0.359111, 0, 1.87042, 5.96344)
+
+[node name="sfx_click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_cynal")
+
+[node name="sfx_hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5iha5")

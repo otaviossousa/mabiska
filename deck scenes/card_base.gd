@@ -1,5 +1,8 @@
 extends Area3D
 
+@onready var sfx_hover: AudioStreamPlayer = $sfx_hover
+@onready var sfx_click: AudioStreamPlayer = $sfx_click
+
 @export var element: String = ""
 var owner_type: String = ""
 
@@ -55,6 +58,7 @@ func _on_mouse_entered():
 	mesh.scale = hover_scale
 	mesh.position.z = original_position.z + hover_z_offset
 	label_3d.visible = true
+	sfx_hover.play(0.36)
 
 func _on_mouse_exited():
 	if owner_type != "player":
@@ -78,6 +82,7 @@ func _input_event(camera, event, click_position, click_normal, shape_idx):
 			var now = Time.get_ticks_msec() / 1000.0
 			if now - last_click_time < 0.3:
 				play_card()
+				sfx_click.play()
 				return
 			else:
 				last_click_time = now
