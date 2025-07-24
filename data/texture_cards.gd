@@ -58,7 +58,9 @@ const TEXTURES = {
 	"thunder": preload("res://assets/cards-assets/quartenary_cards/Element_Thunder.png"),
 	"velarim": preload("res://assets/cards-assets/quartenary_cards/Element_Velarim.png"),
 	"aureol": preload("res://assets/cards-assets/quartenary_cards/Element_Aureolo.png"),
-	"silhain": preload("res://assets/cards-assets/quartenary_cards/Element_Silhain.png")
+	"silhain": preload("res://assets/cards-assets/quartenary_cards/Element_Silhain.png"),
+	
+	"philo": preload("res://assets/cards-assets/quartenary_cards/Element_Philo.png")
 }
 
 static func get_texture(element: String) -> Texture2D:

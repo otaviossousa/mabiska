@@ -65,6 +65,7 @@ const FUSION_TABLE = {
 	["air", "basalt"]: "basalt dust",
 	["charged mist","earth"]: "thunder",
 	["air","geyser"]: "aureol",
+	["magnetite","water"]: "philo"
 }
 
 static func get_fusion_result(e1: String, e2: String) -> String:
