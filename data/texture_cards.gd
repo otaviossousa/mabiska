@@ -59,6 +59,10 @@ const TEXTURES = {
 	"velarim": preload("res://assets/cards-assets/quartenary_cards/Element_Velarim.png"),
 	"aureol": preload("res://assets/cards-assets/quartenary_cards/Element_Aureolo.png"),
 	"silhain": preload("res://assets/cards-assets/quartenary_cards/Element_Silhain.png"),
+	"phoenix": preload("res://assets/cards-assets/quartenary_cards/Element_Phoenix.png"),
+	"swamp fire": preload("res://assets/cards-assets/quartenary_cards/Element_SwampFire.png"),
+	"vulcan": preload("res://assets/cards-assets/quartenary_cards/Element_Vulcan.png"),
+	"slime": preload("res://assets/cards-assets/quartenary_cards/Element_Slime.png"),
 	
 	"philo": preload("res://assets/cards-assets/quartenary_cards/Element_Philo.png")
 }

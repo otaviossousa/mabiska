@@ -65,6 +65,10 @@ const FUSION_TABLE = {
 	["air", "basalt"]: "basalt dust",
 	["charged mist","earth"]: "thunder",
 	["air","geyser"]: "aureol",
+	["guardian","fire"]: "phoenix",
+	["fire","swamp"]: "swamp fire",
+	["earth","smoke"]: "vulcan",
+	["glass","water"]: "slime",
 	
 	["magnetite","water"]: "philo"
 }

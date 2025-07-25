@@ -1,3 +1,8 @@
+# O QUE FAZER: ADICIONAR Nuvem de fala (label text com fundo) dando dicas...
+# 1 . Precisamos de eletricidade para buscar a pedra filosofal, acredito que o ar seja uma boa carta...
+# 2 . A luz se fez! Creio que trazê-la a Terra estaremos próximo da fusão perfeita
+# 3 . A pedra filosofal está feita! Poderei te fazer príncipe outra vez
+
 extends Area3D
 
 var mesh: MeshInstance3D

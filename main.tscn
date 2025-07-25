@@ -105,6 +105,7 @@ surface_material_override/9 = SubResource("StandardMaterial3D_074og")
 transform = Transform3D(1, 0, 0, 0, 0.0261944, 0.999657, 0, -0.999657, 0.0261944, 0, 3.41891, 0.140463)
 
 [node name="playerArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0226357)
 script = ExtResource("4_efxa6")
 
 [node name="player" type="MeshInstance3D" parent="playerArea"]
@@ -119,12 +120,13 @@ shape = SubResource("CylinderShape3D_efxa6")
 
 [node name="frog_sfx_1" type="AudioStreamPlayer" parent="playerArea"]
 stream = ExtResource("5_ycdy4")
+volume_db = 6.667
 
 [node name="frog_sfx_2" type="AudioStreamPlayer" parent="playerArea"]
 stream = ExtResource("6_w48qg")
 
 [node name="npcArea" type="Area3D" parent="."]
-transform = Transform3D(-0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, -0.629, 0.696, -0.25)
+transform = Transform3D(-0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, -0.629, 0.696, -0.272636)
 script = ExtResource("7_w48qg")
 
 [node name="npc" type="MeshInstance3D" parent="npcArea"]
