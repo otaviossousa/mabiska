@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dlma21blg7omj"]
+[gd_scene load_steps=31 format=3 uid="uid://dlma21blg7omj"]
 
 [ext_resource type="Script" uid="uid://dcey7m0jm7meh" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="ArrayMesh" uid="uid://bsdx74exeukmj" path="res://assets/3d models/blackjack_table.obj" id="1_ig7tw"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://lf0hb0jghgoi" path="res://player.gd" id="4_efxa6"]
 [ext_resource type="Script" uid="uid://cdn31vsunl51v" path="res://card_detail_panel.gd" id="5_7mycd"]
 [ext_resource type="Theme" uid="uid://5vu7cke1qphj" path="res://globals/new_theme.tres" id="5_lquwl"]
+[ext_resource type="AudioStream" uid="uid://cmjg7irgwafgi" path="res://assets/sound/sfx/frog-1.mp3" id="5_ycdy4"]
+[ext_resource type="AudioStream" uid="uid://clqfsyj6cwkda" path="res://assets/sound/sfx/frog-2.mp3" id="6_w48qg"]
 [ext_resource type="AudioStream" uid="uid://cnwhmf5uhfgkq" path="res://assets/sound/sfx/button-finish.mp3" id="7_5vw27"]
 [ext_resource type="Texture2D" uid="uid://b1p42qi7btf3y" path="res://assets/textures/floor.jpg" id="7_272bh"]
 [ext_resource type="AudioStream" uid="uid://3hd3no63h5sk" path="res://assets/sound/sfx/button-merge.mp3" id="8_5vw27"]
@@ -109,6 +111,12 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="playerArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.699328, 0.707755, -0.253027)
 shape = SubResource("CylinderShape3D_efxa6")
+
+[node name="frog_sfx_1" type="AudioStreamPlayer" parent="playerArea"]
+stream = ExtResource("5_ycdy4")
+
+[node name="frog_sfx_2" type="AudioStreamPlayer" parent="playerArea"]
+stream = ExtResource("6_w48qg")
 
 [node name="npc" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, -0.629, 0.696, -0.25)
