@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dlma21blg7omj"]
+[gd_scene load_steps=33 format=3 uid="uid://dlma21blg7omj"]
 
 [ext_resource type="Script" uid="uid://dcey7m0jm7meh" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="ArrayMesh" uid="uid://bsdx74exeukmj" path="res://assets/3d models/blackjack_table.obj" id="1_ig7tw"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://clqfsyj6cwkda" path="res://assets/sound/sfx/frog-2.mp3" id="6_w48qg"]
 [ext_resource type="AudioStream" uid="uid://cnwhmf5uhfgkq" path="res://assets/sound/sfx/button-finish.mp3" id="7_5vw27"]
 [ext_resource type="Texture2D" uid="uid://b1p42qi7btf3y" path="res://assets/textures/floor.jpg" id="7_272bh"]
+[ext_resource type="Script" uid="uid://bwk516so12tvb" path="res://npc.gd" id="7_w48qg"]
 [ext_resource type="AudioStream" uid="uid://3hd3no63h5sk" path="res://assets/sound/sfx/button-merge.mp3" id="8_5vw27"]
 [ext_resource type="AudioStream" uid="uid://dred3t212vo6e" path="res://assets/sound/sfx/button-reload.mp3" id="9_kek77"]
 
@@ -70,6 +71,10 @@ bottom_radius = 1.0
 height = 0.01
 rings = 1
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ycdy4"]
+height = 0.394531
+radius = 1.12646
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_5vw27"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
@@ -118,10 +123,19 @@ stream = ExtResource("5_ycdy4")
 [node name="frog_sfx_2" type="AudioStreamPlayer" parent="playerArea"]
 stream = ExtResource("6_w48qg")
 
-[node name="npc" type="MeshInstance3D" parent="."]
+[node name="npcArea" type="Area3D" parent="."]
 transform = Transform3D(-0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, -0.629, 0.696, -0.25)
+script = ExtResource("7_w48qg")
+
+[node name="npc" type="MeshInstance3D" parent="npcArea"]
+transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_cegan")
 mesh = SubResource("CylinderMesh_4c57u")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="npcArea"]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, -0.0742192, 0)
+shape = SubResource("CylinderShape3D_ycdy4")
 
 [node name="floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, -0.378928, 1.37231)
