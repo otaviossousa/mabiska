@@ -4,6 +4,9 @@ extends Node3D
 @onready var npc_hand = $npc_hand
 @onready var end_turn_button := $CanvasLayer/EndTurnButton
 @onready var merge_button = $CanvasLayer2/MergeButton
+@onready var button_finish: AudioStreamPlayer = $button_finish
+@onready var button_merge: AudioStreamPlayer = $button_merge
+@onready var button_reload: AudioStreamPlayer = $button_reload
 
 #Import basic elements_cards
 var player_deck_elements = ["fire", "water", "earth", "air"]
@@ -33,6 +36,7 @@ func _process(delta):
 
 func _on_end_turn_pressed():
 	print("Jogador finalizou turno!")
+	button_finish.play(0.88)
 
 	var player_card = GameState.player_played_card
 	if not player_card:
@@ -66,6 +70,7 @@ func _on_end_turn_pressed():
 
 func _on_merge_pressed():
 	print("Fusão iniciada!")
+	button_merge.play()
 
 	var player_card = GameState.player_played_card
 	var npc_card = GameState.npc_played_card
@@ -216,8 +221,8 @@ func _remove_cards_with_element(hand: Node3D, element: String):
 		if card.has_method("get") and card.get("element") == element:
 			card.queue_free()
 
-
 func _on_reset_button_pressed() -> void:
+	button_reload.play(0.13)
 	reset_game()
 	
 func reset_game():
