@@ -28,6 +28,9 @@ func _ready():
 	
 	merge_button.visible = false
 	merge_button.connect("pressed", _on_merge_pressed)
+	
+	$npcArea.last_fusion_step = 0
+
 
 
 func _process(delta):
@@ -107,12 +110,17 @@ func _on_merge_pressed():
 	sorted.sort()
 
 # Etapas da busca pela "philo"
-	if sorted == ["air", "fire"] and result_element == "lightning":
+	if sorted == ["air", "fire"] or sorted == ["fire", "air"] and result_element == "lightning":
 		print("Parabéns! Está no rumo certo... a luz surgiu!")
-	elif sorted == ["earth", "lightning"] and result_element == "magnetite":
+		$npcArea.last_fusion_step = 1
+	elif sorted == ["earth", "lightning"] or sorted == ["lightning","earth"] and result_element == "magnetite":
 		print("Muito bem! Você criou a magnetita! Mais uma fusão e chegará ao final")
-	elif sorted == ["magnetite", "water"] and result_element == "philo":
+		$npcArea.last_fusion_step = 2
+	elif sorted == ["magnetite", "water"] or sorted == ["water","magnetite"] and result_element == "philo":
 		print("Parabéns! Você venceu! Criou a lendária Pedra Filosofal!")
+		$npcArea.last_fusion_step = 3
+	else:
+		$npcArea.last_fusion_step = 7
 
 
 	# remover todas as cartas com os elementos usados

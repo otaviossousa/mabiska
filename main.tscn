@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dlma21blg7omj"]
+[gd_scene load_steps=34 format=3 uid="uid://dlma21blg7omj"]
 
 [ext_resource type="Script" uid="uid://dcey7m0jm7meh" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="ArrayMesh" uid="uid://bsdx74exeukmj" path="res://assets/3d models/blackjack_table.obj" id="1_ig7tw"]
@@ -80,6 +80,9 @@ radius = 1.12646
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
 albedo_texture = ExtResource("7_272bh")
 
+[sub_resource type="LabelSettings" id="LabelSettings_w48qg"]
+font_color = Color(0, 0, 0, 1)
+
 [node name="main" type="Node3D"]
 script = ExtResource("1_5vw27")
 
@@ -147,6 +150,41 @@ surface_material_override/0 = SubResource("StandardMaterial3D_kek77")
 [node name="player_hand" type="Node3D" parent="."]
 
 [node name="npc_hand" type="Node3D" parent="."]
+
+[node name="CanvasNpc" type="CanvasLayer" parent="."]
+
+[node name="BalloonLabel" type="Control" parent="CanvasNpc"]
+visible = false
+layout_mode = 3
+anchor_left = 0.717938
+anchor_top = 0.475
+anchor_right = 0.997
+anchor_bottom = 0.759
+offset_left = -0.0640259
+offset_top = 0.199982
+offset_right = -0.544067
+offset_bottom = 0.167969
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasNpc/BalloonLabel"]
+light_mask = 7
+visibility_layer = 7
+z_index = 4
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.994
+anchor_bottom = 0.989
+offset_right = -0.0740051
+offset_bottom = 0.0240021
+label_settings = SubResource("LabelSettings_w48qg")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasNpc/BalloonLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+color = Color(0.427451, 1, 1, 0.572549)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

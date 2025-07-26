@@ -69,6 +69,8 @@ const FUSION_TABLE = {
 	["fire","swamp"]: "swamp fire",
 	["earth","smoke"]: "vulcan",
 	["glass","water"]: "slime",
+	["ash","water"]: "mud",
+	["fire","mud"]: "brick",
 	
 	["magnetite","water"]: "philo"
 }
