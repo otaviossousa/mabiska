@@ -252,10 +252,14 @@ func reset_game():
 
 	# Esconde o botão
 	$CanvasReset/ResetButton.visible = false
+	$npcArea.last_fusion_step = 0
 
 func _check_end_game_condition():
 	print("Player hand count: ", player_hand.get_child_count())
 	print("NPC hand count: ", npc_hand.get_child_count())
 	if player_hand.get_child_count() == 3 and npc_hand.get_child_count() == 3:
-		print("Fim de jogo! Só resta uma carta para cada lado.")
+		if $npcArea.last_fusion_step == 3:
+			print("JOGADOR GANHOU!!!!!")
+		else:
+			print("Fim de jogo! Só resta uma carta para cada lado.")
 		$CanvasReset/ResetButton.visible = true

@@ -75,6 +75,7 @@ func _input_event(camera, event, click_position, click_normal, shape_idx):
 
 	if event is InputEventMouseButton and event.pressed:
 		if GameState.played_card:
+			print("Testando")
 			return
 
 		if event.button_index == MOUSE_BUTTON_LEFT:
