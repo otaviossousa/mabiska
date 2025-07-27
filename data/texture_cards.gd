@@ -48,7 +48,7 @@ const TEXTURES = {
 	"mill": preload("res://assets/cards-assets/quartenary_cards/Element_Mill.png"),
 	"mirror": preload("res://assets/cards-assets/quartenary_cards/Element_Mirror.png"),
 	"prism": preload("res://assets/cards-assets/quartenary_cards/Element_Prism.png"),
-	"shard": preload("res://assets/cards-assets/quartenary_cards/Element_shard.png"),
+	"shard": preload("res://assets/cards-assets/quartenary_cards/Element_Shard.png"),
 	"solar flame": preload("res://assets/cards-assets/quartenary_cards/Element_SolarFlame.png"),
 	"spirit golem": preload("res://assets/cards-assets/quartenary_cards/Element_SpiritGolem.png"),
 	"stained glass": preload("res://assets/cards-assets/quartenary_cards/Element_Stained Glass.png"),
