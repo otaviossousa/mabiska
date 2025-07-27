@@ -31,8 +31,6 @@ func _ready():
 	
 	$npcArea.last_fusion_step = 0
 
-
-
 func _process(delta):
 	if GameState.played_card and not end_turn_button.visible:
 		end_turn_button.visible = true
@@ -69,7 +67,6 @@ func _on_end_turn_pressed():
 
 	merge_button.visible = true
 	end_turn_button.disabled = true
-
 
 func _on_merge_pressed():
 	print("Fusão iniciada!")
@@ -122,7 +119,6 @@ func _on_merge_pressed():
 	else:
 		$npcArea.last_fusion_step = 7
 
-
 	# remover todas as cartas com os elementos usados
 	_remove_cards_with_element(player_hand, player_card.element)
 	_remove_cards_with_element(player_hand, npc_card.element)
@@ -160,7 +156,6 @@ func _add_card_to_hand(hand: Node3D, element: String):
 	else:
 		print("⚠️ Textura não encontrada para: ", element)
 
-
 	hand.add_child(card)
 
 	# calcular posição livre
@@ -178,6 +173,7 @@ func _add_card_to_hand(hand: Node3D, element: String):
 				break
 		if not occupied:
 			card.global_position = pos
+			card.original_global_position = pos
 			assigned = true
 			break
 
@@ -203,10 +199,9 @@ func _initialize_hand(hand_node: Node3D, elements: Array, start_positions: Array
 
 		hand_node.add_child(card)
 
-		# Posição inicial (opcional: você pode definir um array com as posições ou calcular dinamicamente)
 		if i < start_positions.size():
 			card.position = start_positions[i]
-
+			card.original_global_position = start_positions[i]
 
 func _get_player_start_positions():
 	return [

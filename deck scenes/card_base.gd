@@ -3,7 +3,9 @@ extends Area3D
 @onready var sfx_hover: AudioStreamPlayer = $sfx_hover
 @onready var sfx_click: AudioStreamPlayer = $sfx_click
 
+@export var original_global_position: Vector3 = Vector3.ZERO
 @export var element: String = ""
+
 var owner_type: String = ""
 
 var mesh: MeshInstance3D
@@ -46,6 +48,7 @@ func _ready():
 
 	original_scale = mesh.scale
 	original_position = mesh.position
+	original_global_position = global_position
 
 	connect("mouse_entered", _on_mouse_entered)
 	connect("mouse_exited", _on_mouse_exited)
@@ -74,8 +77,15 @@ func _input_event(camera, event, click_position, click_normal, shape_idx):
 		return
 
 	if event is InputEventMouseButton and event.pressed:
-		if GameState.played_card:
-			print("Testando")
+		# Clique duplo para jogar ou desfazer
+		if GameState.selected_card == self and GameState.played_card:
+			print("Jogada desfeita: ", element)
+			global_position = original_global_position
+			unhighlight()
+			GameState.selected_card = null
+			GameState.played_card = false
+			GameState.player_played_card = null
+			GameState.player_card_type = ""
 			return
 
 		if event.button_index == MOUSE_BUTTON_LEFT:

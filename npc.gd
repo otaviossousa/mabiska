@@ -8,7 +8,6 @@ extends Area3D
 @onready var balloon_label: Control = get_node("/root/main/CanvasNpc/BalloonLabel")
 @onready var balloon_text: Label = balloon_label.get_node("Label")
 
-
 var last_fusion_step := 0
 
 func _ready():
