@@ -17,6 +17,8 @@ var npc_deck_elements = ["fire", "water", "earth", "air"]
 
 const CardTextures = preload("res://data/texture_cards.gd")
 const FusionTable = preload("res://data/fusion_cards.gd")
+const CardDescriptions = preload("res://data/card_descriptions.gd")
+const FusionMessages = preload("res://data/fusion_messages.gd")
 
 func _ready():
 
@@ -97,6 +99,8 @@ func _on_merge_pressed():
 		return
 
 	print("Fusão resultou em: ", result_element)
+	var result_name = CardDescriptions.get_card_name(result_element)
+	print("Carta criada: ", result_name)
 	
 	# Verificar progressão da fusão especial
 	var a = player_card.element
@@ -106,7 +110,7 @@ func _on_merge_pressed():
 	var sorted = [a, b]
 	sorted.sort()
 
-# Etapas da busca pela "philo"
+	# Etapas da busca pela "philo"
 	if sorted == ["air", "fire"] or sorted == ["fire", "air"] and result_element == "lightning":
 		print("Parabéns! Está no rumo certo... a luz surgiu!")
 		$npcArea.last_fusion_step = 1
@@ -118,6 +122,12 @@ func _on_merge_pressed():
 		$npcArea.last_fusion_step = 3
 	else:
 		$npcArea.last_fusion_step = 7
+		
+	# Exibir mensagem descritiva da fusão
+	var fusion_message = FusionMessages.create_fusion_announcement(a, b, result_name, $npcArea.last_fusion_step)
+	print("=== FUSÃO MÁGICA ===")
+	print(fusion_message)
+	print("====================")
 
 	# remover todas as cartas com os elementos usados
 	_remove_cards_with_element(player_hand, player_card.element)

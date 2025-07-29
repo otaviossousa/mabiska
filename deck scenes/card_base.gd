@@ -23,6 +23,8 @@ var original_position: Vector3
 var hover_scale: Vector3 = Vector3(2, 2, 2)
 var hover_z_offset := 1.5
 
+const CardDescriptions = preload("res://data/card_descriptions.gd")
+
 func _ready():
 	if get_parent().name == "player_hand":
 		owner_type = "player"
@@ -30,7 +32,9 @@ func _ready():
 		owner_type = "npc"
 	
 	label_3d = $Label3D
-	label_3d.text = element.capitalize() + " card"
+	# Usar o nome correto da carta das descrições
+	var card_name = CardDescriptions.get_card_name(element)
+	label_3d.text = card_name
 	label_3d.visible = false  # começa oculto
 
 	mesh = $MeshInstance3D
@@ -128,6 +132,6 @@ func play_card():
 func show_card_details():
 	var panel = get_tree().get_root().get_node("main/CanvasCard/CardDetailPanel")
 	if panel:
-		panel.show_card(mesh.get_active_material(0).albedo_texture, "Descrição da carta: " + element.capitalize())
+		panel.show_card(mesh.get_active_material(0).albedo_texture, element)
 	else:
 		push_error("❌ CardDetailPanel não encontrado na cena!")
