@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dlma21blg7omj"]
+[gd_scene load_steps=35 format=3 uid="uid://dlma21blg7omj"]
 
 [ext_resource type="Script" uid="uid://dcey7m0jm7meh" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="ArrayMesh" uid="uid://bsdx74exeukmj" path="res://assets/3d models/blackjack_table.obj" id="1_ig7tw"]
@@ -15,8 +15,29 @@
 [ext_resource type="AudioStream" uid="uid://3hd3no63h5sk" path="res://assets/sound/sfx/button-merge.mp3" id="8_5vw27"]
 [ext_resource type="AudioStream" uid="uid://dred3t212vo6e" path="res://assets/sound/sfx/button-reload.mp3" id="9_kek77"]
 
+[sub_resource type="MeshTexture" id="MeshTexture_w48qg"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
+resource_local_to_scene = true
 albedo_color = Color(0.0470588, 0.439216, 0, 1)
+albedo_texture = SubResource("MeshTexture_w48qg")
+normal_scale = 12.58
+clearcoat = 0.3
+clearcoat_roughness = 0.11
+ao_light_affect = 0.64
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_flip_tangent = true
+heightmap_flip_binormal = true
+heightmap_flip_texture = true
+subsurf_scatter_skin_mode = true
+texture_filter = 1
+texture_repeat = false
+grow_amount = 1.0
+point_size = 2.6
+distance_fade_min_distance = 3.7
+distance_fade_max_distance = 16.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4c57u"]
 albedo_color = Color(1, 0.0784314, 0.0705882, 1)
@@ -92,6 +113,7 @@ current = true
 
 [node name="BlackjackTable" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.389, 0)
+cast_shadow = 0
 mesh = ExtResource("1_ig7tw")
 surface_material_override/0 = SubResource("StandardMaterial3D_5vw27")
 surface_material_override/1 = SubResource("StandardMaterial3D_4c57u")
@@ -193,8 +215,10 @@ color = Color(0.427451, 1, 1, 0.572549)
 [node name="EndTurnButton" type="Button" parent="CanvasLayer"]
 visible = false
 modulate = Color(0, 0.898039, 0, 1)
-offset_right = 53.0
-offset_bottom = 28.0
+offset_left = 507.0
+offset_top = 517.0
+offset_right = 656.0
+offset_bottom = 548.0
 text = "FINALIZAR TURNO"
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
