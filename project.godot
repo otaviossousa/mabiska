@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Mabiska"
-run/main_scene="uid://dlma21blg7omj"
+run/main_scene="uid://cgsprlpqk7ocw"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
